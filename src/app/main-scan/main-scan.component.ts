@@ -9,5 +9,4 @@ export class MainScanComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
