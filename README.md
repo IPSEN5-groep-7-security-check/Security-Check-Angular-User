@@ -18,7 +18,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `npm install -D tailwindcss`, `npx tailwindcss init` for Tailwind.
 
-Run `npm i daisyui`, `npm daisyui update` for Daisy UI
+Run `npm i daisyui` for Daisy UI
 
 ## Running unit tests
 
