@@ -13,7 +13,7 @@ export class LoadScanComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.router.navigate(['/scanResult']);
+      this.router.navigate(['/scan-results']);
     }, 15000);
     console.log(timeInterval())
   }
