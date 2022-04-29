@@ -1,0 +1,76 @@
+<div class="row d-flex flex-column justify-content-center pt-5">
+  <div class="col-xl-12">
+    <h1>Scan je website op kwetsbaarheden</h1>
+    <p>Ontdek veel voorkomende kwetsbaarheden en kom erachter</p>
+    <p>waar je website veiliger kan worden met een Security Check</p>
+  </div>
+  <div class="securitycheckbar landing-padding d-flex justify-content-center">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+      <form
+        class="inputgroup"
+        [formGroup]="myForm"
+        (ngSubmit)="onSubmit()"
+        novalidate
+      >
+        <div class="form-group">
+          <label>HTTPS://</label>
+          <input
+            type="text"
+            formControlName="url"
+            class="form-control"
+            placeholder="checksite.nl"
+            [checked]="inputlink"
+            (change)="inputlink = !inputlink"
+          />
+<!--          <div-->
+<!--            *ngIf="m.url.touched && m.url.invalid"-->
+<!--            class="alert alert-danger"-->
+<!--          >-->
+          <div class="alert alert-danger">
+<!--            <p *ngIf="m.url.errors?.required">Vul een webadres in</p>-->
+<!--            <p *ngIf="m.url.errors?.pattern">Het webadres is onjuist</p>-->
+            <p>Vul een webadres in</p>
+            <p>Het webadres is onjuist</p>
+          </div>
+        </div>
+        <div id="check-boxes">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" />
+            <label class="form-check-label">
+              Negeer resultaten uit de cache en forceer een nieuwe scan
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              [checked]="termscheckbox"
+              (change)="termscheckbox = !termscheckbox"
+            />
+            <label class="form-check-label">
+              Ik ga akkoord met de
+              <a
+                class="link-primary"
+                href="https://getbigmarketing.nl/algemene-voorwaarden/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >voorwaarden</a
+              >
+            </label>
+          </div>
+        </div>
+        <div id="start-scan-group">
+          <button
+            class="btn btn-dark"
+            type="submit"
+            routerLink="/loading"
+            [disabled]="!inputlink || !termscheckbox || !myForm.valid"
+          >
+            START SCAN
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

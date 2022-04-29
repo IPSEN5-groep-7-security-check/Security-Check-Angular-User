@@ -1,0 +1,58 @@
+.row{
+  background-color: #F3F6FD;
+}
+h1{
+  text-align: center;
+}
+p{
+  text-align: center;
+}
+
+.inputgroup{
+  padding: 20px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+}
+#start-scan-group{
+  padding-top: 10px;
+  padding-left: 35%;
+}
+button{
+  background-color: #F597A9;
+  color: #FFFFFF;
+}
+#check-boxes{
+  padding-top: 5%;
+  padding-bottom: 2%;
+}
+
+.link-primary {
+  text-decoration: none;
+}
+
+.link-primary:hover {
+  text-decoration: underline;
+}
+
+.landing-padding {
+  padding-bottom: 15%;
+}
+@media only screen and (max-width: 1440px) {
+  .landing-padding {
+    padding-bottom: 23%;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .landing-padding {
+    padding-bottom: 34%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .landing-padding {
+    padding-bottom: 44%;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .securitycheckbar{
+  }
+}
