@@ -7,6 +7,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoadScanComponent } from './load-scan/load-scan.component';
 import { ScanResultComponent } from './scan-result/scan-result.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {FaqPageComponent} from "./faq-page/faq-page.component";
+import {LoadingPageComponent} from "./loading-page/loading-page.component";
+import {LandingPageComponent} from "./landing-page/landing-page.component";
 
 @NgModule({
   declarations: [
@@ -15,6 +18,9 @@ import {ReactiveFormsModule} from "@angular/forms";
     LoadScanComponent,
     LoadScanComponent,
     ScanResultComponent,
+    FaqPageComponent,
+    LoadingPageComponent,
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,
