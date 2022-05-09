@@ -10,6 +10,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {FaqPageComponent} from "./faq-page/faq-page.component";
 import {LoadingPageComponent} from "./loading-page/loading-page.component";
 import {LandingPageComponent} from "./landing-page/landing-page.component";
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {LandingPageComponent} from "./landing-page/landing-page.component";
     FaqPageComponent,
     LoadingPageComponent,
     LandingPageComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
