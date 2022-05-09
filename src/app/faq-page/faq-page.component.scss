@@ -15,5 +15,15 @@ a:hover{
 .colorize:hover {
   color: white;
   background-color: #ffc501;
-  transition: 3s;
+  transition: 2s;
+}
+
+.colorize:active {
+  background-color: #ffc501;
+  color: white;
+}
+
+.colorize:focus {
+  background-color: #ffc501;
+  color: white;
 }
