@@ -8,8 +8,6 @@ import { LoadScanComponent } from './load-scan/load-scan.component';
 import { ScanResultComponent } from './scan-result/scan-result.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {FaqPageComponent} from "./faq-page/faq-page.component";
-import {LoadingPageComponent} from "./loading-page/loading-page.component";
-import {LandingPageComponent} from "./landing-page/landing-page.component";
 import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
@@ -17,11 +15,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     AppComponent,
     MainScanComponent,
     LoadScanComponent,
-    LoadScanComponent,
     ScanResultComponent,
     FaqPageComponent,
-    LoadingPageComponent,
-    LandingPageComponent,
     NavbarComponent,
   ],
   imports: [
