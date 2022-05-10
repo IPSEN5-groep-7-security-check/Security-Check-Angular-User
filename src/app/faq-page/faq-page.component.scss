@@ -1,0 +1,29 @@
+a {
+  color: #0693E3;
+}
+a:hover{
+  color: black;
+  transition: 1s;
+}
+.center {
+  text-align: center;
+}
+.colorize {
+  background-color: #F597A9;
+  color: azure;
+}
+.colorize:hover {
+  color: white;
+  background-color: #ffc501;
+  transition: 2s;
+}
+
+.colorize:active {
+  background-color: #ffc501;
+  color: white;
+}
+
+.colorize:focus {
+  background-color: #ffc501;
+  color: white;
+}
