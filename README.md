@@ -36,6 +36,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 docs: https://git-scm.com/book/en/v2/Git-Tools-Submodules
 
-git submodule add https://github.com/chaconinc/DbConnector
+git submodule add https://github.com/IPSEN5-groep-7-security-check/Security-Check-Prisma.git
 see difference prisma: git diff --cached --submodule
 update submodule: git submodule update
