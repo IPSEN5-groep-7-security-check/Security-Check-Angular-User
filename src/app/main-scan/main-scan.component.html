@@ -8,29 +8,46 @@
           bg-white  px-3 text-sm text-gray-500 shadow-sm">
         http(s)://
       </span>
-        <input
-          type="text"
-          class=" w-max flex-1 appearance-none rounded-r-lg
-        border border-gray-300 bg-white py-2 px-4 text-base text-gray-700 placeholder-gray-400
-        shadow-sm focus:border-transparent focus:outline-none focus:ring-2"
-          name="url"
-          placeholder="www.jouw-website.nl"
-        />
+
+
+        <form [formGroup]="urlForm" (ngSubmit)="onSubmit()" novalidate>
+          <input
+            type="text"
+            formControlName="url"
+            required
+            class=" w-max form-control flex-1 appearance-none rounded-r-lg border border-gray-300 bg-white py-2 px-4 text-base text-gray-700 placeholder-gray-400 shadow-sm focus:border-transparent focus:outline-none focus:ring-2"
+            name="url"
+            [checked]="inputLink"
+            (change)="inputLink = !inputLink"
+            placeholder="www.jouw-website.nl"
+          >
+          <div *ngIf="m['url'].touched && urlForm.controls['url'].invalid" class="alert alert-danger">
+            <p *ngIf="m['url'].errors">Value is required</p>
+            <p *ngIf="m['url'].errors">Only URL is allowed</p>
+          </div>
+        </form>
+
       </div>
       <div class="form-control checkbox-align">
         <label class="label cursor-pointer">
-          <input type="checkbox" class="checkbox border-l-dark">
-          <span class="label-text checkbox-text-align"> Ga je akkoord met alle voorwaarden?</span>
-        </label>
-      </div>
-      <div class="form-control checkbox-align">
-        <label class="label cursor-pointer">
-          <input type="checkbox" class="checkbox border-l-dark">
+          <input class="checkbox border-l-dark" type="checkbox">
           <span class="label-text checkbox-text-align">Negeer resultaten uit de cache en forceer een nieuwe scan</span>
         </label>
       </div>
+      <div class="form-control checkbox-align">
+        <label class="label cursor-pointer">
+          <input [(ngModel)]="termsCheckbox" class="checkbox border-l-dark" type="checkbox">
+          <span class="label-text checkbox-text-align"> Ga je akkoord met alle               <a
+            class="link-primary"
+            href="https://getbigmarketing.nl/algemene-voorwaarden/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >voorwaarden</a
+          >?</span>
+        </label>
+      </div>
       <div class="card-actions justify-center">
-        <button class="btn btn-wide bg-primary text-base-100"><a routerLink="/loading..." routerLinkActive="active">🔍 Start Scan</a></button>
+        <button [disabled]="!termsCheckbox || !urlForm.valid" type="submit" class="btn btn-wide bg-primary text-base-100"><a routerLink="/loading..." routerLinkActive="active">🔍 Start Scan</a></button>
       </div>
     </div>
   </div>
