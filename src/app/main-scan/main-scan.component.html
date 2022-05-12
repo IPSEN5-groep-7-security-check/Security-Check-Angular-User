@@ -1,19 +1,53 @@
-<div>
-  <div class="absolute inset-x-1/4 inset-y-1/4 card w-100 bg-base-100 shadow-xl mx-auto p-12 bg-gray-700 text-white">
-    <div class="card-body items-center">
-      <h3 class="card-title">
-        Benieuwd hoe veilig je website is?<br>
-        Scan je Website gratis hier bij ons</h3>
-      <input type="text" placeholder="Type here" class="input input-ghost w-full max-w-xs border-accent">
-      <div class="card-actions justify-center">
-        <button class="btn btn-wide bg-pink-400"><a routerLink="/loading..." routerLinkActive="active">Jouw scan aanvragen!</a></button>
+<div class="min-w-max h-screen bg-base-200 inset-x-1/4 inset-y-1/4 m-auto py-48 text-center text-black">
+  <h1 class="mx-auto font-bold text-3xl text-center">Scan je website op kwetsbaarheden</h1>
+  <h4 class="text-base-content pb-5">Ontdek veel voorkomende kwetsbaarheden en kom erachter waar je website veiliger kan worden met een Security Check</h4>
+  <div class="absolute h-max bg-base-100 inset-x-1/4 card shadow-xl mx-auto p-12">
+    <div class="card-body items-center text-center px-24">
+      <div class="relative flex">
+      <span class="inline-flex items-center  rounded-l-md border-t border-l border-b border-gray-300
+          bg-white  px-3 text-sm text-gray-500 shadow-sm">
+        http(s)://
+      </span>
+
+
+        <form [formGroup]="urlForm" (ngSubmit)="onSubmit()" novalidate>
+          <input
+            type="text"
+            formControlName="url"
+            required
+            class=" w-max form-control flex-1 appearance-none rounded-r-lg border border-gray-300 bg-white py-2 px-4 text-base text-gray-700 placeholder-gray-400 shadow-sm focus:border-transparent focus:outline-none focus:ring-2"
+            name="url"
+            [checked]="inputLink"
+            (change)="inputLink = !inputLink"
+            placeholder="www.jouw-website.nl"
+          >
+          <div *ngIf="m['url'].touched && urlForm.controls['url'].invalid" class="alert alert-danger">
+            <p *ngIf="m['url'].errors">Value is required</p>
+            <p *ngIf="m['url'].errors">Only URL is allowed</p>
+          </div>
+        </form>
+
       </div>
-<!--checkbox-->
-      <div class="form-control">
+      <div class="form-control checkbox-align">
         <label class="label cursor-pointer">
-          <input type="checkbox" class="checkbox border-white">
-          <span class="label-text text-white"> Ga je akkoord met alle voorwaarden?</span>
+          <input class="checkbox border-l-dark" type="checkbox">
+          <span class="label-text checkbox-text-align">Negeer resultaten uit de cache en forceer een nieuwe scan</span>
         </label>
+      </div>
+      <div class="form-control checkbox-align">
+        <label class="label cursor-pointer">
+          <input [(ngModel)]="termsCheckbox" class="checkbox border-l-dark" type="checkbox">
+          <span class="label-text checkbox-text-align"> Ga je akkoord met alle               <a
+            class="link-primary"
+            href="https://getbigmarketing.nl/algemene-voorwaarden/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >voorwaarden</a
+          >?</span>
+        </label>
+      </div>
+      <div class="card-actions justify-center">
+        <button [disabled]="!termsCheckbox || !urlForm.valid" type="submit" class="btn btn-wide bg-primary text-base-100"><a routerLink="/loading..." routerLinkActive="active">🔍 Start Scan</a></button>
       </div>
     </div>
   </div>
