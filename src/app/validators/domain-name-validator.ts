@@ -1,9 +1,10 @@
-import {AbstractControl, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
-import psl from "psl";
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import psl from 'psl';
+import stripProtocol from '../util/strip-protocol';
 
 export function domainNameValidator(): ValidatorFn {
-  return (control:AbstractControl) : ValidationErrors | null => {
-    const value = control.value;
-    return psl.isValid(value) ? null : {domainName: true};
-  }
+  return (control: AbstractControl): ValidationErrors | null => {
+    const value = stripProtocol(control.value);
+    return psl.isValid(value) ? null : { domainName: true };
+  };
 }
