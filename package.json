@@ -20,7 +20,7 @@
     "@angular/router": "~13.2.0",
     "@tailwindcss/typography": "^0.5.2",
     "daisyui": "^2.14.2",
-    "is-valid-domain": "^0.1.6",
+    "publicsuffixlist": "^0.3.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "tw-elements": "^1.0.0-alpha12",
