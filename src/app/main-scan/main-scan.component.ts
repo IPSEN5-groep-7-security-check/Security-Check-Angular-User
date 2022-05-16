@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {domainNameValidator} from "../validators/domain-name-validator";
 
 @Component({
   selector: 'app-main-scan',
@@ -11,15 +12,12 @@ export class MainScanComponent implements OnInit {
   userName: String = '';
   urlForm: FormGroup;
   inputLink: boolean = false;
-  urlRegEx =
-    '^[-a-zA-Z0-9@:%_+.~#?&//=]{2,256}(.[a-z]{2,4})?\b(/[-a-zA-Z0-9@:%_+.~#?&//=]*)?';
 
-  // suffix: Array<String> = ['.com', '.net', '.co', '.nl'];
-  // prefix: Array<String> = ['www.', 'http://www.', 'https://www.', '']
+  prefix: Array<String> = ['www.', 'http://www.', 'https://www.', '']
 
   constructor(private formBuilder: FormBuilder) {
     this.urlForm = formBuilder.group({
-      url: ['', [Validators.required, Validators.pattern(this.urlRegEx)]]
+      url: ['', [Validators.required, domainNameValidator()]]
     })
   }
 

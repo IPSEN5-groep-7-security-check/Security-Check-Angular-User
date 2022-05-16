@@ -21,9 +21,9 @@
             (change)="inputLink = !inputLink"
             placeholder="www.jouw-website.nl"
           >
-          <div *ngIf="m['url'].touched && urlForm.controls['url'].invalid" class="alert alert-danger">
-            <p *ngIf="m['url'].errors">Value is required</p>
-            <p *ngIf="m['url'].errors">Only URL is allowed</p>
+          <div *ngIf="m['url']?.touched && urlForm.controls['url']?.invalid" class="alert alert-danger">
+            <p *ngIf="m['url']?.errors">Value is required</p>
+            <p *ngIf="m['url']?.errors">Only URL is allowed</p>
           </div>
         </form>
 
