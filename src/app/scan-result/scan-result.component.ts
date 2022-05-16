@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { FormControl, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-scan-result',
@@ -10,6 +11,20 @@ export class ScanResultComponent implements OnInit {
   color: string = "";
   showModal = false;
 
+
+  nameFormControl = new FormControl("", [
+    Validators.required
+  ]);
+
+  emailFormControl = new FormControl("", [
+    Validators.required,
+    Validators.email,
+    Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")
+  ]);
+
+  phoneFormControl = new FormControl("", [
+    Validators.minLength(10)
+  ]);
 
   constructor() {
   }
@@ -36,5 +51,15 @@ export class ScanResultComponent implements OnInit {
   toggleModal(){
     this.showModal = !this.showModal;
   }
+
+  sendEmail(){
+    let user = {
+      name: this.nameFormControl.value,
+      email: this.emailFormControl.value
+    }
+    console.log(user)
+  }
+
+
 
 }

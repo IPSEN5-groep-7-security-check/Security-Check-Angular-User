@@ -26,21 +26,31 @@
       <div class="relative p-6 flex-auto">
         <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-            Naam
+            Naam*
           </label>
-          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Naam">
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Naam" [formControl]="nameFormControl">
+          <div *ngIf="(nameFormControl.invalid && nameFormControl.touched) || nameFormControl.dirty">
+            <small *ngIf="nameFormControl.errors?.['required']" class="text-danger">Een naam is verplicht</small>
+          </div>
         </div>
         <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
-            E-mail
+            E-mail*
           </label>
-          <input class="shadow appearance-none border   rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="E-mail">
+          <input class="shadow appearance-none border   rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="E-mail" [formControl]="emailFormControl">
+          <div *ngIf="(emailFormControl.invalid && emailFormControl.touched) || emailFormControl.dirty">
+            <small *ngIf="emailFormControl.errors?.['required']" class="text-danger">Een E-mailadres is verplicht</small>
+            <small *ngIf="emailFormControl.errors?.['pattern']" class="text-danger">Vul een valide mail adres in</small>
+          </div>
         </div>
         <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="phonenumber">
             Telefoonnummer
           </label>
-          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phonenumber" type="text" placeholder="Telefoonnummer">
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phonenumber" type="text" placeholder="Telefoonnummer" [formControl]="phoneFormControl">
+          <div *ngIf="(phoneFormControl.invalid && phoneFormControl.touched) || phoneFormControl.dirty">
+            <small *ngIf="phoneFormControl.errors?.['minLength']" class="text-danger">Het nummer klopt niet.</small>
+          </div>
         </div>
       </div>
       <!--footer-->
@@ -48,7 +58,7 @@
         <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModal()">
           Sluiten
         </button>
-        <button class="bg-rose-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModal()">
+        <button class="bg-rose-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="sendEmail()">
           Verstuur
         </button>
       </div>
