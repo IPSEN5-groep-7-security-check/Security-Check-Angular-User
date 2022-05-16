@@ -30,6 +30,7 @@ export class MainScanComponent implements OnInit {
   }
 
   onSubmit() {
+    this.url.markAsTouched();
     const data = this.form.value;
     console.log('ORIGINAL: ', data);
     const newData = {
