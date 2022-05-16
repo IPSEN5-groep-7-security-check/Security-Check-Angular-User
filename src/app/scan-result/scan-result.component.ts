@@ -8,6 +8,8 @@ import {Component, OnInit} from '@angular/core';
 export class ScanResultComponent implements OnInit {
   result: number = 0;
   color: string = "";
+  showModal = false;
+
 
   constructor() {
   }
@@ -29,6 +31,10 @@ export class ScanResultComponent implements OnInit {
     } else {
       this.color = "red-color"
     }
+  }
+
+  toggleModal(){
+    this.showModal = !this.showModal;
   }
 
 }
