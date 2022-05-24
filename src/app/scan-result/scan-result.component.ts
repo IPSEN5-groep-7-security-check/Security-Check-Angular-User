@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-scan-result',
@@ -6,10 +6,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./scan-result.component.css']
 })
 export class ScanResultComponent implements OnInit {
+  result: number = 0;
+  color: string = "";
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
+    this.result = Math.floor(Math.random() * 100);
+    this.setResultColor(this.result)
+  }
+
+  setResultColor(result: number) {
+    if (result > 80) {
+      this.color = "green-color"
+    } else if (result > 60) {
+      this.color = "light-green-color"
+    } else if (result > 40) {
+      this.color = "yellow-color"
+    } else if (result > 20) {
+      this.color = "orange-color"
+    } else {
+      this.color = "red-color"
+    }
   }
 
 }

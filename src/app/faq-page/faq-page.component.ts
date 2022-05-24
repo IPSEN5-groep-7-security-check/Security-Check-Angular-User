@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import 'tw-elements';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-faq-page',

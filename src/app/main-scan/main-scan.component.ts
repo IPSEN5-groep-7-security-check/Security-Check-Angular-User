@@ -5,6 +5,7 @@ import stripProtocol from '../util/strip-protocol';
 import { catchError, Observable, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-main-scan',
   templateUrl: './main-scan.component.html',
