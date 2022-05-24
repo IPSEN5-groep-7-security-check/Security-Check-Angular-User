@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
 import { MainScanComponent } from './main-scan/main-scan.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,8 +19,7 @@ import {FooterComponent} from "./footer/footer.component";
     ScanResultComponent,
     FaqPageComponent,
     NavbarComponent,
-    FooterComponent,
-    LoadingPageComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,
