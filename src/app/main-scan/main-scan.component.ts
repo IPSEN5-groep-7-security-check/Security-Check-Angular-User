@@ -1,41 +1,69 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import { FormBuilder, Validators } from '@angular/forms';
+import { domainNameValidator } from '../validators/domain-name-validator';
+import stripProtocol from '../util/strip-protocol';
+import { catchError, Observable, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-main-scan',
   templateUrl: './main-scan.component.html',
-  styleUrls: ['./main-scan.component.scss']
+  styleUrls: ['./main-scan.component.scss'],
 })
 export class MainScanComponent implements OnInit {
-  termsCheckbox: boolean = false;
-  userName: String = '';
-  urlForm: FormGroup;
-  inputLink: boolean = false;
-  urlRegEx =
-    '^[-a-zA-Z0-9@:%_+.~#?&//=]{2,256}(.[a-z]{2,4})?\b(/[-a-zA-Z0-9@:%_+.~#?&//=]*)?';
+  form = this.fb.group({
+    url: ['', [Validators.required, domainNameValidator()]],
+    forceRescan: [false],
+    acceptTerms: [false, Validators.requiredTrue],
+  });
 
-  // suffix: Array<String> = ['.com', '.net', '.co', '.nl'];
-  // prefix: Array<String> = ['www.', 'http://www.', 'https://www.', '']
+  constructor(private fb: FormBuilder, private http: HttpClient) {}
 
-  constructor(private formBuilder: FormBuilder) {
-    this.urlForm = formBuilder.group({
-      url: ['', [Validators.required, Validators.pattern(this.urlRegEx)]]
-    })
+  get formControls() {
+    return this.form.controls;
   }
 
-  get m(){
-    return this.urlForm.controls;
+  get url() {
+    return this.formControls['url']!;
   }
 
-  checkValidation() {
-    console.log(this.userName)
-
+  get acceptTerms() {
+    return this.formControls['acceptTerms']!;
   }
 
   onSubmit() {
-    console.log(this.urlForm.value);
+    this.url.markAsTouched();
+    const data = this.form.value;
+    console.log('ORIGINAL: ', data);
+    const newData = {
+      url: stripProtocol(data.url),
+      forceRescan: data.forceRescan,
+    };
+    console.log('MODIFIED: ', newData);
+    this.addWebsiteUrl();
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  addWebsiteUrl(): Observable<MainScanComponent> {
+    return this.http
+      .post<MainScanComponent>('localhost:8080' + '/api/v1/analyze', this.url)
+      .pipe(catchError(this.handleError));
+    console.log('yay');
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.status === 0) {
+      console.error('An error occurred:', error.error);
+    } else {
+      console.error(
+        `Backend returned code ${error.status}, body was: `,
+        error.error
+      );
+    }
+    return throwError(
+      () => new Error('Something bad happened; please try again later.')
+    );
   }
 }
