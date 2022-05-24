@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { domainNameValidator } from '../validators/domain-name-validator';
 import stripProtocol from '../util/strip-protocol';
+import { catchError, Observable, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-main-scan',
@@ -15,7 +17,7 @@ export class MainScanComponent implements OnInit {
     acceptTerms: [false, Validators.requiredTrue],
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private http: HttpClient) {}
 
   get formControls() {
     return this.form.controls;
@@ -38,7 +40,29 @@ export class MainScanComponent implements OnInit {
       forceRescan: data.forceRescan,
     };
     console.log('MODIFIED: ', newData);
+    this.addWebsiteUrl();
   }
 
   ngOnInit(): void {}
+
+  addWebsiteUrl(): Observable<MainScanComponent> {
+    return this.http
+      .post<MainScanComponent>('localhost:8080' + '/api/v1/analyze', this.url)
+      .pipe(catchError(this.handleError));
+    console.log('yay');
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.status === 0) {
+      console.error('An error occurred:', error.error);
+    } else {
+      console.error(
+        `Backend returned code ${error.status}, body was: `,
+        error.error
+      );
+    }
+    return throwError(
+      () => new Error('Something bad happened; please try again later.')
+    );
+  }
 }

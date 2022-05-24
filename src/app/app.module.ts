@@ -6,10 +6,11 @@ import { MainScanComponent } from './main-scan/main-scan.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoadScanComponent } from './load-scan/load-scan.component';
 import { ScanResultComponent } from './scan-result/scan-result.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {FaqPageComponent} from "./faq-page/faq-page.component";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FaqPageComponent } from './faq-page/faq-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import {FooterComponent} from "./footer/footer.component";
+import { FooterComponent } from './footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,15 +20,16 @@ import {FooterComponent} from "./footer/footer.component";
     ScanResultComponent,
     FaqPageComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
