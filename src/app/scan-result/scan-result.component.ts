@@ -4,7 +4,7 @@ import { FormControl, Validators } from "@angular/forms";
 @Component({
   selector: 'app-scan-result',
   templateUrl: './scan-result.component.html',
-  styleUrls: ['./scan-result.component.css']
+  styleUrls: ['./scan-result.component.scss']
 })
 export class ScanResultComponent implements OnInit {
   result: number = 0;
