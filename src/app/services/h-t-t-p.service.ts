@@ -9,11 +9,7 @@ export class HTTPService {
 
   constructor(private http: HttpClient) { }
 
-  login (data: Login) {
-    this.http.post<LoginResponse>(environment.userApiUrl + "/login", body).subscribe(data => {
-      this.setSession(data)
-    })
-
-    return this.isLoggedIn
+  getScanStatus() {
+    return this.http.get(environment.userApiUrl + "/api/v1/analyze");
   }
 }

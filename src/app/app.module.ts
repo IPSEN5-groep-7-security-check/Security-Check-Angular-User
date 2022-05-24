@@ -11,7 +11,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FaqPageComponent} from "./faq-page/faq-page.component";
 import { NavbarComponent } from './navbar/navbar.component';
 import {FooterComponent} from "./footer/footer.component";
-import {LoadingPageComponent} from "./loading-page/loading-page.component";
 
 @NgModule({
   declarations: [
