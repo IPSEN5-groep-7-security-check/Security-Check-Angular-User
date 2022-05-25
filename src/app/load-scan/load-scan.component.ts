@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
-import {timeInterval} from "rxjs";
-import {HTTPService} from "../services/http.service";
+import { Router } from '@angular/router';
+import { timeInterval } from 'rxjs';
+import { HTTPService } from '../services/http.service';
 
 @Component({
   selector: 'app-load-scan',
   templateUrl: './load-scan.component.html',
-  styleUrls: ['./load-scan.component.scss']
+  styleUrls: ['./load-scan.component.scss'],
 })
 export class LoadScanComponent implements OnInit {
-
-  constructor(private router: Router, private httpService: HTTPService) { }
+  constructor(private router: Router, private httpService: HTTPService) {}
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -20,7 +19,7 @@ export class LoadScanComponent implements OnInit {
   }
 
   checkScanStatus() {
-    this.httpService.getScanStatus().subscribe(data => {
+    this.httpService.getScanStatus().subscribe((data) => {
       console.log(data);
       return data;
     });

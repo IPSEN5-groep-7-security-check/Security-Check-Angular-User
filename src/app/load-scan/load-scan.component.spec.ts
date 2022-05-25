@@ -8,9 +8,8 @@ describe('LoadScanComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoadScanComponent ]
-    })
-    .compileComponents();
+      declarations: [LoadScanComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

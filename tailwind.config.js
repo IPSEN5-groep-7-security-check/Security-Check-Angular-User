@@ -1,7 +1,10 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-  content: ['./src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js'],
+  content: [
+    "./src/**/*.{html,js}",
+    "./node_modules/tw-elements/dist/js/**/*.js",
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -9,11 +12,15 @@ module.exports = {
         heading: ['"Lunchbox"'],
       },
       colors: {
-        dark: '#1A1A1A',
+        dark: "#1A1A1A",
       },
     },
   },
-  plugins: [require('@tailwindcss/typography'), require('daisyui'),require('tw-elements/dist/plugin')],
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("daisyui"),
+    require("tw-elements/dist/plugin"),
+  ],
   daisyui: {
     themes: [
       {

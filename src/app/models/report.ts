@@ -1,6 +1,5 @@
 export interface Report {
-  id: string,
-  hostname: string,
-  score: JSON,
-
+  id: string;
+  hostname: string;
+  score: JSON;
 }
