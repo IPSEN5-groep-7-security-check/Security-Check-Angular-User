@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { catchError, Observable, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import {domainNameValidator} from "../validators/domain-name-validator";
-import stripProtocol from "../util/strip-protocol";
-import {HTTPService} from "../services/http.service";
-
+import { domainNameValidator } from '../validators/domain-name-validator';
+import stripProtocol from '../util/strip-protocol';
+import { HTTPService } from '../services/http.service';
 
 @Component({
   selector: 'app-main-scan',
@@ -19,7 +18,11 @@ export class MainScanComponent implements OnInit {
     acceptTerms: [false, Validators.requiredTrue],
   });
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private httpService: HTTPService) {}
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private httpService: HTTPService
+  ) {}
 
   get formControls() {
     return this.form.controls;
@@ -48,7 +51,9 @@ export class MainScanComponent implements OnInit {
   ngOnInit(): void {}
 
   sendUrlToObservatory() {
-    this.httpService.postScanUrl(this.getSubmittedUrl).pipe(catchError(this.handleError));
+    this.httpService
+      .postScanUrl(this.getSubmittedUrl)
+      .pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
