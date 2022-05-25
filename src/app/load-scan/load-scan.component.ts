@@ -15,6 +15,13 @@ export class LoadScanComponent implements OnInit {
     setTimeout(() => {
       this.router.navigate(['/scan-results']);
     }, 15000);
-    console.log(timeInterval())
+    this.checkScanStatus();
+  }
+
+  checkScanStatus() {
+    this.httpService.getScanStatus().subscribe(data => {
+      console.log(data);
+      return data;
+    });
   }
 }
