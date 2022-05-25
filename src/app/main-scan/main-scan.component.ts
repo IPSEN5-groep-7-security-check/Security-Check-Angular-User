@@ -13,8 +13,8 @@ import { HTTPService } from '../services/http.service';
 })
 export class MainScanComponent implements OnInit {
   form = this.fb.group({
-    url: ['', [Validators.required, domainNameValidator()]],
-    forceRescan: [false],
+    host: ['', [Validators.required, domainNameValidator()]],
+    rescan: [false],
     acceptTerms: [false, Validators.requiredTrue],
   });
 
@@ -28,33 +28,36 @@ export class MainScanComponent implements OnInit {
     return this.form.controls;
   }
 
-  get getSubmittedUrl() {
-    return this.formControls['url']!;
+  get host() {
+    return this.formControls['host']!;
   }
 
   get acceptTerms() {
     return this.formControls['acceptTerms']!;
   }
 
+  get rescan() {
+    return this.formControls['rescan'];
+  }
+
   onSubmit() {
-    this.getSubmittedUrl.markAsTouched();
-    const data = this.form.value;
-    console.log('ORIGINAL: ', data);
-    const newData = {
-      url: stripProtocol(data.url),
-      forceRescan: data.forceRescan,
-    };
-    console.log('MODIFIED: ', newData);
-    this.sendUrlToObservatory();
+    this.host.markAsTouched();
+    const formHost = this.host.value;
+    const host = stripProtocol(formHost);
+    const rescan = this.rescan?.value;
+    this.httpService.startScan(host, rescan).subscribe({
+      next: (data: any) => {
+        console.log('DATA: ', data);
+        console.log('SCAN_ID: ', data.scan_id);
+        console.log('SCAN_ID: ', data.state);
+      },
+      error: (error) => {
+        console.error('There was an error!', error);
+      },
+    });
   }
 
   ngOnInit(): void {}
-
-  sendUrlToObservatory() {
-    this.httpService
-      .postScanUrl(this.getSubmittedUrl)
-      .pipe(catchError(this.handleError));
-  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
