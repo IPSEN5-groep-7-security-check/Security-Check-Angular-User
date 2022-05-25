@@ -1,3 +1,0 @@
-[submodule "Security-Check-Prisma"]
-	path = prisma
-	url = git@github.com:IPSEN5-groep-7-security-check/Security-Check-Prisma.git
