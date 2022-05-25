@@ -12,7 +12,7 @@ export class ScanResultComponent implements OnInit {
   constructor(private router: Router, private httpService: HTTPService) { }
 
   ngOnInit(): void {
-    this.securityScanResult()
+    this.getSecurityScanResult()
   }
 
   getSecurityScanResult(){
