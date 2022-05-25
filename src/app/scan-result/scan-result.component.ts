@@ -15,10 +15,10 @@ export class ScanResultComponent implements OnInit {
     this.securityScanResult()
   }
 
-  securityScanResult(){
-    this.httpService.getScanResult().subscribe(data => {
-      console.log(data);
-      return data;
+  getSecurityScanResult(){
+    this.httpService.getScanResult().subscribe(report => {
+      let result = this.prisma.schema.Report.console.log(report);
+      return report;
     });
   }
 

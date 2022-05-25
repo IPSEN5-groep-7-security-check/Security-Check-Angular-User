@@ -18,10 +18,11 @@
     "@angular/platform-browser": "~13.3.7",
     "@angular/platform-browser-dynamic": "~13.3.7",
     "@angular/router": "~13.3.7",
+    "@prisma/client": "^3.14.0",
     "@tailwindcss/typography": "^0.5.2",
     "daisyui": "^2.14.3",
-    "psl": "^1.8.0",
     "is-valid-domain": "^0.1.6",
+    "psl": "^1.8.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "tw-elements": "^1.0.0-alpha12",
@@ -40,6 +41,7 @@
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "prisma": "^3.14.0",
     "tailwindcss": "^3.0.24",
     "typescript": "~4.5.2"
   }
