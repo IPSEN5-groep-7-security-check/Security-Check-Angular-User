@@ -1,25 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
-import {HTTPService} from "../services/http.service";
+import { Router } from '@angular/router';
+import { HTTPService } from '../services/http.service';
 
 @Component({
   selector: 'app-scan-result',
   templateUrl: './scan-result.component.html',
-  styleUrls: ['./scan-result.component.css']
+  styleUrls: ['./scan-result.component.css'],
 })
 export class ScanResultComponent implements OnInit {
+  result: any;
+  color: any;
 
-  constructor(private router: Router, private httpService: HTTPService) { }
+  constructor(private router: Router, private httpService: HTTPService) {}
 
   ngOnInit(): void {
-    this.getSecurityScanResult()
+    this.getSecurityScanResult();
   }
 
-  getSecurityScanResult(){
-    this.httpService.getScanResult().subscribe(report => {
-      let result = this.prisma.schema.Report.console.log(report);
+  getSecurityScanResult() {
+    this.httpService.getScanResult().subscribe((report) => {
       return report;
     });
   }
-
 }
