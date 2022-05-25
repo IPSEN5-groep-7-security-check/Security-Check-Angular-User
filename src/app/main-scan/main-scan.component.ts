@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { domainNameValidator } from '../validators/domain-name-validator';
-import stripProtocol from '../util/strip-protocol';
 import { catchError, Observable, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-
+import { domainNameValidator } from '../validators/domain-name-validator';
+import stripProtocol from '../util/strip-protocol';
+import { HTTPService } from '../services/http.service';
 
 @Component({
   selector: 'app-main-scan',
@@ -18,13 +18,17 @@ export class MainScanComponent implements OnInit {
     acceptTerms: [false, Validators.requiredTrue],
   });
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {}
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private httpService: HTTPService
+  ) {}
 
   get formControls() {
     return this.form.controls;
   }
 
-  get url() {
+  get getSubmittedUrl() {
     return this.formControls['url']!;
   }
 
@@ -33,7 +37,7 @@ export class MainScanComponent implements OnInit {
   }
 
   onSubmit() {
-    this.url.markAsTouched();
+    this.getSubmittedUrl.markAsTouched();
     const data = this.form.value;
     console.log('ORIGINAL: ', data);
     const newData = {
@@ -41,16 +45,15 @@ export class MainScanComponent implements OnInit {
       forceRescan: data.forceRescan,
     };
     console.log('MODIFIED: ', newData);
-    this.addWebsiteUrl();
+    this.sendUrlToObservatory();
   }
 
   ngOnInit(): void {}
 
-  addWebsiteUrl(): Observable<MainScanComponent> {
-    return this.http
-      .post<MainScanComponent>('localhost:8080' + '/api/v1/analyze', this.url)
+  sendUrlToObservatory() {
+    this.httpService
+      .postScanUrl(this.getSubmittedUrl)
       .pipe(catchError(this.handleError));
-    console.log('yay');
   }
 
   private handleError(error: HttpErrorResponse) {

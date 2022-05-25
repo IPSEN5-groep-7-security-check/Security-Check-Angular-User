@@ -1,34 +1,25 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { HTTPService } from '../services/http.service';
 
 @Component({
   selector: 'app-scan-result',
   templateUrl: './scan-result.component.html',
-  styleUrls: ['./scan-result.component.css']
+  styleUrls: ['./scan-result.component.css'],
 })
 export class ScanResultComponent implements OnInit {
-  result: number = 0;
-  color: string = "";
+  result: any;
+  color: any;
 
-  constructor() {
-  }
+  constructor(private router: Router, private httpService: HTTPService) {}
 
   ngOnInit(): void {
-    this.result = Math.floor(Math.random() * 100);
-    this.setResultColor(this.result)
+    this.getSecurityScanResult();
   }
 
-  setResultColor(result: number) {
-    if (result > 80) {
-      this.color = "green-color"
-    } else if (result > 60) {
-      this.color = "light-green-color"
-    } else if (result > 40) {
-      this.color = "yellow-color"
-    } else if (result > 20) {
-      this.color = "orange-color"
-    } else {
-      this.color = "red-color"
-    }
+  getSecurityScanResult() {
+    this.httpService.getScanResult().subscribe((report) => {
+      return report;
+    });
   }
-
 }

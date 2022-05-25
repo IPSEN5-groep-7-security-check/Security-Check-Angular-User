@@ -1,0 +1,3 @@
+[submodule "prisma"]
+	path = prisma
+	url = git@github.com:IPSEN5-groep-7-security-check/prisma.git

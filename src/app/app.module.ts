@@ -20,14 +20,12 @@ import { HttpClientModule } from '@angular/common/http';
     ScanResultComponent,
     FaqPageComponent,
     NavbarComponent,
-    landing-page
     FooterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    landing-page
     FormsModule,
     HttpClientModule,
   ],

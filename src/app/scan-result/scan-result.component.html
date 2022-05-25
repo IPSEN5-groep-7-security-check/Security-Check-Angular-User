@@ -1,13 +1,20 @@
 <h1 class="text-center font-bold text-4xl mt-[8vh]">Scan Compleet!</h1>
-<div class="absolute w-1/4 h-fit inset-x-1/4 inset-y-1/4 card bg-base-100 shadow-2xl mx-auto p-8 text-black">
+<div
+  class="absolute w-1/4 h-fit inset-x-1/4 inset-y-1/4 card bg-base-100 shadow-2xl mx-auto p-8 text-black"
+>
   <h1 class="text-4xl font-bold">Dit scoort je website:</h1>
   <div class="p-10">
-    <p class="text-center text-black mb-10 mt-10 p-4 text-4xl font-medium"><span [ngClass]="color" class="p-5 rounded-full">{{result}} / 100</span></p>
+    <p class="text-center text-black mb-10 mt-10 p-4 text-4xl font-medium">
+      <span [ngClass]="color" class="p-5 rounded-full">{{ result }} / 100</span>
+    </p>
   </div>
-  <button class="rounded-md rose-color text-white text-4xl p-4">Volledig resultaat</button>
-  <button class="text-blue-400" routerLink="/home">Een nieuwe scan uitvoeren</button>
+  <button class="rounded-md rose-color text-white text-4xl p-4">
+    Volledig resultaat
+  </button>
+  <button class="text-blue-400" routerLink="/home">
+    Een nieuwe scan uitvoeren
+  </button>
 </div>
-
 
 <!--  <div class="card-body items-center">-->
 <!--    <h3 class="card-title">-->
