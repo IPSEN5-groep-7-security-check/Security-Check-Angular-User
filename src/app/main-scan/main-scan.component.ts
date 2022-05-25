@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { domainNameValidator } from '../validators/domain-name-validator';
-import stripProtocol from '../util/strip-protocol';
 import { catchError, Observable, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {domainNameValidator} from "../validators/domain-name-validator";
