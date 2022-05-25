@@ -48,7 +48,7 @@ export class MainScanComponent implements OnInit {
   ngOnInit(): void {}
 
   sendUrlToObservatory() {
-    this.httpService.postScanUrl(this.getSubmittedUrl)
+    this.httpService.postScanUrl(this.getSubmittedUrl).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
