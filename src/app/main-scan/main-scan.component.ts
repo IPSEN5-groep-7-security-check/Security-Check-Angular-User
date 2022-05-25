@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
+import {HTTPService} from "../services/http.service";
 
 @Component({
   selector: 'app-main-scan',
@@ -7,6 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainScanComponent implements OnInit {
 
+
+  constructor(private router: Router, private httpService: HTTPService) {
+  }
+
   ngOnInit(): void {
+
+  }
+
+  sendScanUrl() {
+    this.httpService.getScanResult().subscribe(data => {
+      console.log(data);
+      return data;
+    });
   }
 }
