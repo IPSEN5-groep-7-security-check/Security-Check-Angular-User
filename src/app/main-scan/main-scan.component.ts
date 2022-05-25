@@ -47,10 +47,10 @@ export class MainScanComponent implements OnInit {
   ngOnInit(): void {}
 
   addWebsiteUrl(): Observable<MainScanComponent> {
+    console.log('yay');
     return this.http
       .post<MainScanComponent>('localhost:8080' + '/api/v1/analyze', this.url)
       .pipe(catchError(this.handleError));
-    console.log('yay');
   }
 
   private handleError(error: HttpErrorResponse) {
