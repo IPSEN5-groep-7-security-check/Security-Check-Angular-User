@@ -12,17 +12,14 @@ import { HTTPService } from '../services/http.service';
   styleUrls: ['./main-scan.component.scss'],
 })
 export class MainScanComponent implements OnInit {
+  isScanning = false;
   form = this.fb.group({
     host: ['', [Validators.required, domainNameValidator()]],
     rescan: [false],
     acceptTerms: [false, Validators.requiredTrue],
   });
 
-  constructor(
-    private fb: FormBuilder,
-    private http: HttpClient,
-    private httpService: HTTPService
-  ) {}
+  constructor(private fb: FormBuilder, private httpService: HTTPService) {}
 
   get formControls() {
     return this.form.controls;
@@ -46,10 +43,11 @@ export class MainScanComponent implements OnInit {
     const host = stripProtocol(formHost);
     const rescan = this.rescan?.value;
     this.httpService.startScan(host, rescan).subscribe({
-      next: (data: any) => {
-        console.log('DATA: ', data);
-        console.log('SCAN_ID: ', data.scan_id);
-        console.log('SCAN_ID: ', data.state);
+      next: (scan) => {
+        console.log('DATA: ', scan);
+        console.log('SCAN_ID: ', scan.scan_id);
+        console.log('SCAN_ID: ', scan.state);
+        this.isScanning = true;
       },
       error: (error) => {
         console.error('There was an error!', error);
@@ -58,18 +56,4 @@ export class MainScanComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-
-  private handleError(error: HttpErrorResponse) {
-    if (error.status === 0) {
-      console.error('An error occurred:', error.error);
-    } else {
-      console.error(
-        `Backend returned code ${error.status}, body was: `,
-        error.error
-      );
-    }
-    return throwError(
-      () => new Error('Something bad happened; please try again later.')
-    );
-  }
 }
