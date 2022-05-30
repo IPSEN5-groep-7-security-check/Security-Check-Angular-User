@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Scan } from '../util/scan';
 import { Test } from '../util/test';
+import { catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,12 +12,14 @@ export class HTTPService {
   constructor(private http: HttpClient) {}
 
   startScan(host: string, rescan: boolean | null) {
-    return this.http.post(environment.apiUrl + '/api/v1/analyze', null, {
-      params: {
-        host: host,
-        rescan: rescan ? 'true' : 'false',
-      },
-    });
+    return this.http
+      .post<Scan>(environment.apiUrl + '/api/v1/analyze', null, {
+        params: {
+          host: host,
+          rescan: rescan ? 'true' : 'false',
+        },
+      })
+      .pipe(catchError(this.handleError));
   }
 
   getScanStatus(host: string) {
@@ -37,5 +40,19 @@ export class HTTPService {
         scan: scanId,
       },
     });
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.status === 0) {
+      console.error('An error occurred:', error.error);
+    } else {
+      console.error(
+        `Backend returned code ${error.status}, body was: `,
+        error.error
+      );
+    }
+    return throwError(
+      () => new Error('Something bad happened; please try again later.')
+    );
   }
 }

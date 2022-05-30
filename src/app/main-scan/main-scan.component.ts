@@ -18,11 +18,7 @@ export class MainScanComponent implements OnInit {
     acceptTerms: [false, Validators.requiredTrue],
   });
 
-  constructor(
-    private fb: FormBuilder,
-    private http: HttpClient,
-    private httpService: HTTPService
-  ) {}
+  constructor(private fb: FormBuilder, private httpService: HTTPService) {}
 
   get formControls() {
     return this.form.controls;
@@ -58,18 +54,4 @@ export class MainScanComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-
-  private handleError(error: HttpErrorResponse) {
-    if (error.status === 0) {
-      console.error('An error occurred:', error.error);
-    } else {
-      console.error(
-        `Backend returned code ${error.status}, body was: `,
-        error.error
-      );
-    }
-    return throwError(
-      () => new Error('Something bad happened; please try again later.')
-    );
-  }
 }
