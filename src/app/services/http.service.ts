@@ -11,7 +11,10 @@ import { catchError, throwError } from 'rxjs';
 export class HTTPService {
   constructor(private http: HttpClient) {}
 
+  tempHost?: string;
+
   startScan(host: string, rescan: boolean | null) {
+    this.tempHost = host;
     return this.http
       .post<Scan>(environment.apiUrl + '/api/v1/analyze', null, {
         params: {

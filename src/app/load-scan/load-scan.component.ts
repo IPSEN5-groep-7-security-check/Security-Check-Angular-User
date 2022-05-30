@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { timeInterval } from 'rxjs';
 import { HTTPService } from '../services/http.service';
 import { Scan } from '../util/scan';
 
@@ -12,15 +11,19 @@ import { Scan } from '../util/scan';
 export class LoadScanComponent implements OnInit {
   constructor(private router: Router, private httpService: HTTPService) {}
   scanState?: Scan['state'];
+  private scan: Scan | undefined;
+
 
   ngOnInit(): void {
     this.checkScanStatus();
   }
 
   async checkScanStatus() {
-    const host = 'codearise.com'; // TODO: get this from somewhere
-    const scan = await this.httpService.getScanStatus(host).toPromise();
-    const state = scan?.state;
+    const host = this.httpService.tempHost; // TODO: get this from somewhere
+    if (host != null) {
+      this.scan = await this.httpService.getScanStatus(host).toPromise();
+    }
+    const state = this.scan?.state;
     if (state === 'FINISHED') {
       this.router.navigate(['/scan-result']);
     } else if (state === 'ABORTED' || state === 'FAILED') {
