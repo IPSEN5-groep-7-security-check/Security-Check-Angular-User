@@ -1,3 +1,6 @@
 [submodule "prisma"]
 	path = prisma
 	url = git@github.com:IPSEN5-groep-7-security-check/prisma.git
+[submodule "Security-Check-Prisma"]
+	path = Security-Check-Prisma
+	url = https://github.com/IPSEN5-groep-7-security-check/Security-Check-Prisma.git
