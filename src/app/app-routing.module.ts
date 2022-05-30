@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   { path: 'home', component: MainScanComponent },
   { path: 'loading...', component: LoadScanComponent },
-  { path: 'scan-results', component: ScanResultComponent },
+  { path: 'scan-result', component: ScanResultComponent },
   { path: 'faq', component: FaqPageComponent },
   { path: '**', redirectTo: 'not-found', pathMatch: 'full' },
 ];
