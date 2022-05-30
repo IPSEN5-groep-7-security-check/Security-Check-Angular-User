@@ -19,7 +19,7 @@
     "@angular/platform-browser-dynamic": "~13.3.7",
     "@angular/router": "~13.3.7",
     "@tailwindcss/typography": "^0.5.2",
-    "daisyui": "^2.14.3",
+    "daisyui": "^2.15.1",
     "is-valid-domain": "^0.1.6",
     "psl": "^1.8.0",
     "rxjs": "~7.5.0",
