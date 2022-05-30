@@ -8,7 +8,7 @@ import { HTTPService } from '../services/http.service';
   styleUrls: ['./scan-result.component.css'],
 })
 export class ScanResultComponent implements OnInit {
-  result: any;
+  score: any;
   color: any;
 
   constructor(private router: Router, private httpService: HTTPService) {}
@@ -19,6 +19,7 @@ export class ScanResultComponent implements OnInit {
 
   getSecurityScanResult() {
     this.httpService.getScanResult().subscribe((report) => {
+      this.score = report.score;
       return report;
     });
   }
