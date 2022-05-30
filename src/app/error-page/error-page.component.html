@@ -1,21 +1,23 @@
-<div class="min-w-max h-screen bg-base-200 inset-x-1/4 inset-y-1/4 m-auto py-48 text-center text-black sm:w-32 md:w-32 lg:w-11/12">
-  <div class="row" style="text-align: center">
-    <h1> {{ errorMessage }} </h1>
-  </div>
-  <hr><hr>
-  <div class="row">
-    <button class="btn btn-primary btn-success btn-lg pull-right" routerLink="/home">Return to home!</button>
-  </div>
-  <div>
-    <div class="row" style="text-align: center">
-      <img src="{{pickedPhoto}}"  alt="Error 404!" height="500px">
+<div class="flex items-center justify-center w-screen h-screen">
+  <div class="px-4 lg:py-12">
+    <div class="lg:gap-4 lg:flex">
+      <div
+        class="flex flex-col items-center justify-center md:py-24 lg:py-32"
+      >
+        <h1 class="font-bold text-primary text-9xl">404</h1>
+        <p
+          class="mb-2 text-2xl font-bold text-center text-gray-800 md:text-3xl"
+        >
+          <span class="text-secondary">Oops!</span> Pagina niet gevonden
+        </p>
+        <p class="mb-8 text-center text-gray-500 md:text-lg">
+          De pagina die u zoekt bestaat niet.
+        </p>
+        <button class="btn btn-primary" routerLink="/home">Terug naar home!</button>
+      </div>
+      <div class="mt-4">
+        <img class="object-cover w-full h-full" src="{{pickedPhoto}}"  alt="Error 404!">
+      </div>
     </div>
-    <div class="row" style="text-align: center">
-      <img src="assets/404Photos/error_06.jpg"  alt="It's Happening!" height="300px">
-    </div>
-  </div>
-  <hr><hr>
-  <div class="row">
-    <button class="btn btn-primary btn-success btn-lg pull-left" routerLink="/home">Return to home!</button>
   </div>
 </div>

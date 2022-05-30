@@ -13,10 +13,7 @@ export class ErrorPageComponent implements OnInit {
 
   errorPhotos: string[] = [
     "assets/404Photos/error_01.webp",
-    "assets/404Photos/error_02.png",
-    "assets/404Photos/error_03.jpg",
-    "assets/404Photos/error_04.jpg",
-    "assets/404Photos/error_05.jpg"
+    "assets/404Photos/error_02.jpg"
   ];
 
   constructor(private route: ActivatedRoute) { }
