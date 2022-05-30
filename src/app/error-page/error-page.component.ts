@@ -8,7 +8,9 @@ import {ActivatedRoute, Data} from "@angular/router";
 })
 export class ErrorPageComponent implements OnInit {
   errorMessage!: string;
+
   delay = (ms: number) => new Promise(res => setTimeout(res, ms));
+
   pickedPhoto: any;
 
   errorPhotos: string[] = [
@@ -25,7 +27,6 @@ export class ErrorPageComponent implements OnInit {
         this.pickedPhoto = this.randomErrorPhoto();
       }
     );
-
   }
 
   public randomErrorPhoto() {
