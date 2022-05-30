@@ -16,7 +16,9 @@ export class ScanResultComponent implements OnInit, OnDestroy {
   constructor(private httpService: HTTPService) {}
 
   ngOnInit(): void {
-    const host = 'twitter.com'; // TODO: get this from somewhere
+    // TODO: get the scan status response from the request made in the load-scan component
+    // Right now the request is made twice in a row for no apperant reason
+    const host = 'twitter.com';
     this.scanSub = this.httpService.getScanStatus(host).subscribe((scan) => {
       const score = scan.score ?? 0;
       this.setResultColor(score);

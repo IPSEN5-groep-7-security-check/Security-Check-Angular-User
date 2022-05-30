@@ -14,23 +14,42 @@ export class LoadScanComponent implements OnInit {
   scanState?: Scan['state'];
 
   ngOnInit(): void {
-    setTimeout(() => {
-      const state = this.scanState;
-      if (state === 'FINISHED') {
-        this.router.navigate(['/scan-result']);
-      } else if (state === 'ABORTED' || state === 'FAILED') {
-        console.error('Scan failed');
-        // TODO: handle error state
-        this.router.navigate(['/home']); // Navigate to home for now
-      }
-    }, 15000);
     this.checkScanStatus();
   }
 
-  checkScanStatus() {
-    const host = 'twitter.com'; // TODO: get this from somewhere
-    this.httpService.getScanStatus(host).subscribe((scan) => {
-      this.scanState = scan.state;
-    });
+  async checkScanStatus() {
+    const host = 'codearise.com'; // TODO: get this from somewhere
+    const scan = await this.httpService.getScanStatus(host).toPromise();
+    const state = scan?.state;
+    if (state === 'FINISHED') {
+      this.router.navigate(['/scan-result']);
+    } else if (state === 'ABORTED' || state === 'FAILED') {
+      console.error('Scan failed');
+      // TODO: handle error state
+      this.router.navigate(['/home']); // Navigate to home for now
+    } else {
+      setTimeout(() => {
+        this.checkScanStatus();
+      }, 1500);
+    }
+
+    // this.httpService.getScanStatus(host).subscribe({
+    //   next: (scan) => {
+    //     const state = scan.state;
+    //     if (state === 'FINISHED') {
+    //       this.router.navigate(['/scan-result']);
+    //     } else if (state === 'ABORTED' || state === 'FAILED') {
+    //       console.error('Scan failed');
+    //       // TODO: handle error state
+    //       this.router.navigate(['/home']); // Navigate to home for now
+    //     }
+    //     console.log('DATA: ', scan);
+    //     console.log('SCAN_ID: ', scan.scan_id);
+    //     console.log('SCAN_ID: ', scan.state);
+    //   },
+    //   error: (error) => {
+    //     console.error('There was an error!', error);
+    //   },
+    // });
   }
 }
