@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoadingPageComponent } from './loading-page.component';
+import { ErrorPageComponent } from './error-page.component';
 
-describe('LoadingPageComponent', () => {
-  let component: LoadingPageComponent;
-  let fixture: ComponentFixture<LoadingPageComponent>;
+describe('ErrorPageComponent', () => {
+  let component: ErrorPageComponent;
+  let fixture: ComponentFixture<ErrorPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LoadingPageComponent],
+      declarations: [ErrorPageComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoadingPageComponent);
+    fixture = TestBed.createComponent(ErrorPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

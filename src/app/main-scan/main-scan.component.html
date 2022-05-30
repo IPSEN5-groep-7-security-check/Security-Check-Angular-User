@@ -21,11 +21,11 @@
           </span>
           <input
             type="text"
-            id="url"
-            formControlName="url"
+            id="host"
+            formControlName="host"
             required
             class="w-max form-control flex-1 appearance-none rounded-r-lg border border-gray-300 bg-white py-2 px-4 text-base text-gray-700 placeholder-gray-400 shadow-sm focus:border-transparent focus:outline-none focus:ring-2"
-            name="url"
+            name="host"
             placeholder="jouw-website.nl"
           />
         </div>
@@ -34,7 +34,7 @@
             <input
               class="checkbox border-l-dark"
               type="checkbox"
-              formControlName="forceRescan"
+              formControlName="rescan"
             />
             <span class="label-text checkbox-text-align"
               >Negeer resultaten uit de cache en forceer een nieuwe scan</span
@@ -87,10 +87,10 @@
                   d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <span *ngIf="getSubmittedUrl.touched && getSubmittedUrl.invalid"
+              <span *ngIf="host.touched && host.invalid"
                 >De domein naam is incorrect.</span
               >
-              <span *ngIf="acceptTerms.invalid && getSubmittedUrl.valid"
+              <span *ngIf="acceptTerms.invalid && host.valid"
                 >Je moet akkoord gaan met de voorwaarden.</span
               >
             </div>
