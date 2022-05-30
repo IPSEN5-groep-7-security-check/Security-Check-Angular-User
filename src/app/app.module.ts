@@ -10,6 +10,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FaqPageComponent} from "./faq-page/faq-page.component";
 import { NavbarComponent } from './navbar/navbar.component';
 import {FooterComponent} from "./footer/footer.component";
+import { DarkModeToggleComponent } from './app-dark-mode-toggle/app-dark-mode-toggle.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {FooterComponent} from "./footer/footer.component";
     ScanResultComponent,
     FaqPageComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    DarkModeToggleComponent
   ],
   imports: [
     BrowserModule,

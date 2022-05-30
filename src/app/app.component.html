@@ -1,4 +1,4 @@
-<nav class="navbar bg-base-100">
+<nav class="navbar">
   <div class="flex-1">
     <a class="p-0 btn-ghost normal-case text-xl">
       <img class="w-9/12" src="assets/logo.jpg" alt="logo">
@@ -14,7 +14,8 @@
         <li><a class="" href="https://getbigmarketing.nl/contact/">Contact</a></li>
         <li><a class="" href="/faq">FAQ</a></li>
       </ul>
-      <button (click)="toggleDarkTheme()">Toggle dark theme</button>
+<!--      <button (click)="toggleDarkTheme()">Toggle dark theme</button>-->
+      <app-dark-mode-toggle></app-dark-mode-toggle>
     </div>
   </div>
 </nav>

@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'IPSEN4Demo';
 
-  toggleDarkTheme(): void {
-    document.body.classList.toggle('dark-theme');
-  }
+  // toggleDarkTheme(): void {
+  //   document.body.classList.toggle('dark-theme');
+  // }
 }
