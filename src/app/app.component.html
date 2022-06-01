@@ -1,17 +1,13 @@
-<nav class="navbar bg-base-100">
+<nav class="navbar">
   <div class="flex-1">
     <a class="p-0 btn-ghost normal-case text-xl">
       <img class="w-9/12" src="assets/logo.jpg" alt="logo" />
     </a>
     <div class="m-auto px-9 font-bold">
       <ul class="menu menu-horizontal px-9">
-        <li>
-          <a class="m-25" href="https://getbigmarketing.nl/over-ons/">Home</a>
-        </li>
-        <li>
-          <a class="" href="https://getbigmarketing.nl/over-ons/"> Over ons</a>
-        </li>
-        <li><a class="">Web-development</a></li>
+        <li><a class="m-25" href="/home">Home</a></li>
+        <li><a class="" href="https://getbigmarketing.nl/over-ons/"> Over ons</a></li>
+        <li><a class="" >Web-development</a></li>
         <li><a class="">Marketing</a></li>
         <li>
           <a class="" href="https://getbigmarketing.nl/grafisch-design/"
@@ -24,6 +20,8 @@
         </li>
         <li><a class="" href="/faq">FAQ</a></li>
       </ul>
+<!--      <button (click)="toggleDarkTheme()">Toggle dark theme</button>-->
+      <app-dark-mode-toggle></app-dark-mode-toggle>
     </div>
   </div>
 </nav>

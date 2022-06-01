@@ -55,4 +55,21 @@ export class LoadScanComponent implements OnInit {
     //   },
     // });
   }
+
+  // checkScanStatus() {
+  //   this.httpService.getScanStatus().subscribe(data => {
+  //     console.log(data);
+  //     return data;
+  //   });
+  // }
+
+
+
+  // checkScan(): void {
+  //   while(this.http.getScanState() != "FINISHED") { //pluck("state")?
+  //     setTimeout(() => {}, 3000);
+  //   }
+  //   this.router.navigate(['/scan-results']);
+  // }
+
 }
