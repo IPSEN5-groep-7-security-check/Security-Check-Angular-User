@@ -8,9 +8,8 @@ describe('MainScanComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MainScanComponent ]
-    })
-    .compileComponents();
+      declarations: [MainScanComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

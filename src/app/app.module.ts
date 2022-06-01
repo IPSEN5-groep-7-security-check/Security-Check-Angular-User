@@ -31,6 +31,6 @@ import { DarkModeToggleComponent } from './app-dark-mode-toggle/app-dark-mode-to
     HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoadScanComponent } from './load-scan.component';
+import { ErrorPageComponent } from './error-page.component';
 
-describe('LoadScanComponent', () => {
-  let component: LoadScanComponent;
-  let fixture: ComponentFixture<LoadScanComponent>;
+describe('ErrorPageComponent', () => {
+  let component: ErrorPageComponent;
+  let fixture: ComponentFixture<ErrorPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LoadScanComponent],
+      declarations: [ErrorPageComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoadScanComponent);
+    fixture = TestBed.createComponent(ErrorPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,41 +1,59 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import { FormBuilder, Validators } from '@angular/forms';
+import { catchError, Observable, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { domainNameValidator } from '../validators/domain-name-validator';
+import stripProtocol from '../util/strip-protocol';
+import { HTTPService } from '../services/http.service';
 
 @Component({
   selector: 'app-main-scan',
   templateUrl: './main-scan.component.html',
-  styleUrls: ['./main-scan.component.scss']
+  styleUrls: ['./main-scan.component.scss'],
 })
 export class MainScanComponent implements OnInit {
-  termsCheckbox: boolean = false;
-  userName: String = '';
-  urlForm: FormGroup;
-  inputLink: boolean = false;
-  urlRegEx =
-    '^[-a-zA-Z0-9@:%_+.~#?&//=]{2,256}(.[a-z]{2,4})?\b(/[-a-zA-Z0-9@:%_+.~#?&//=]*)?';
+  isScanning = false;
+  form = this.fb.group({
+    host: ['', [Validators.required, domainNameValidator()]],
+    rescan: [false],
+    acceptTerms: [false, Validators.requiredTrue],
+  });
 
-  // suffix: Array<String> = ['.com', '.net', '.co', '.nl'];
-  // prefix: Array<String> = ['www.', 'http://www.', 'https://www.', '']
+  constructor(private fb: FormBuilder, private httpService: HTTPService) {}
 
-  constructor(private formBuilder: FormBuilder) {
-    this.urlForm = formBuilder.group({
-      url: ['', [Validators.required, Validators.pattern(this.urlRegEx)]]
-    })
+  get formControls() {
+    return this.form.controls;
   }
 
-  get m(){
-    return this.urlForm.controls;
+  get host() {
+    return this.formControls['host']!;
   }
 
-  checkValidation() {
-    console.log(this.userName)
+  get acceptTerms() {
+    return this.formControls['acceptTerms']!;
+  }
 
+  get rescan() {
+    return this.formControls['rescan'];
   }
 
   onSubmit() {
-    console.log(this.urlForm.value);
+    this.host.markAsTouched();
+    const formHost = this.host.value;
+    const host = stripProtocol(formHost);
+    const rescan = this.rescan?.value;
+    this.httpService.startScan(host, rescan).subscribe({
+      next: (scan) => {
+        console.log('DATA: ', scan);
+        console.log('SCAN_ID: ', scan.scan_id);
+        console.log('SCAN_ID: ', scan.state);
+        this.isScanning = true;
+      },
+      error: (error) => {
+        console.error('There was an error!', error);
+      },
+    });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }
