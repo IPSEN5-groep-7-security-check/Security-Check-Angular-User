@@ -56,12 +56,12 @@ export class LoadScanComponent implements OnInit {
     // });
   }
 
-  checkScanStatus() {
-    this.httpService.getScanStatus().subscribe(data => {
-      console.log(data);
-      return data;
-    });
-  }
+  // checkScanStatus() {
+  //   this.httpService.getScanStatus().subscribe(data => {
+  //     console.log(data);
+  //     return data;
+  //   });
+  // }
 
 
 
