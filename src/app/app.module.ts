@@ -6,10 +6,11 @@ import { MainScanComponent } from './main-scan/main-scan.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoadScanComponent } from './load-scan/load-scan.component';
 import { ScanResultComponent } from './scan-result/scan-result.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {FaqPageComponent} from "./faq-page/faq-page.component";
-import { NavbarComponent } from './navbar/navbar.component';
+import { FaqPageComponent } from './faq-page/faq-page.component';
 import { DarkModeToggleComponent } from './app-dark-mode-toggle/app-dark-mode-toggle.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DarkModeToggleComponent } from './app-dark-mode-toggle/app-dark-mode-to
     ScanResultComponent,
     FaqPageComponent,
     NavbarComponent,
-    DarkModeToggleComponent
+    ErrorPageComponent,
+    DarkModeToggleComponent,
   ],
   imports: [
     BrowserModule,

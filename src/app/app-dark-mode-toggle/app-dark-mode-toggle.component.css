@@ -5,14 +5,12 @@
 .toggle-label {
   position: relative;
   display: inline-block;
-  width: 3rem;
-  height: 3rem;
   overflow: hidden;
   cursor: pointer;
 }
 
-.light,
-.dark {
+.sun,
+.moon {
   position: absolute;
   left: 0;
   width: 100%;
@@ -21,18 +19,18 @@
   user-select: none;
 }
 
-.light {
+.sun {
   top: 0;
 }
 
-.dark {
+.moon {
   top: -150%;
 }
 
-.toggle:checked + .toggle-label .light {
+.toggle:checked + .toggle-label .sun {
   top: 150%;
 }
 
-.toggle:checked + .toggle-label .dark {
+.toggle:checked + .toggle-label .moon {
   top: 0;
 }
