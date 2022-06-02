@@ -43,6 +43,9 @@ body:not(.dark-mode-preloading) {
 body.dark-mode {
   background-color: #2d3436;
   color: #dfe6e9;
+  .bar-col {
+    background-color: #000000;
+  }
 }
 
 body.dark-mode h1, body.dark-mode h4 {
@@ -52,6 +55,9 @@ body.dark-mode h1, body.dark-mode h4 {
 body.light-mode {
   background-color: #dfe6e9;
   color: #2d3436;
+  .bar-col {
+    background-color: #ffffff;
+  }
 }
 
 body.light-mode h1, body.light-mode h4 {
