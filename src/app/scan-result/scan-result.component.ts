@@ -81,6 +81,5 @@ export class ScanResultComponent implements OnInit, OnDestroy {
 
   toggleModal(){
     this.showModal = !this.showModal;
-    // console.log("Yek")
   }
 }
