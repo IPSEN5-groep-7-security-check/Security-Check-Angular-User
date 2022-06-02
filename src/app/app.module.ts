@@ -7,11 +7,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoadScanComponent } from './load-scan/load-scan.component';
 import { ScanResultComponent } from './scan-result/scan-result.component';
 import { FaqPageComponent } from './faq-page/faq-page.component';
-import { DarkModeToggleComponent } from './app-dark-mode-toggle/app-dark-mode-toggle.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { FooterComponent } from './footer/footer.component';
+import { ThemeToggleComponent } from './theme-toggle/theme-toggle.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +22,8 @@ import { FooterComponent } from './footer/footer.component';
     FaqPageComponent,
     NavbarComponent,
     ErrorPageComponent,
-    DarkModeToggleComponent,
     FooterComponent,
+    ThemeToggleComponent,
   ],
   imports: [
     BrowserModule,

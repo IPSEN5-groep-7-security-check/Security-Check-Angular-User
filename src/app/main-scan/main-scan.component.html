@@ -1,6 +1,6 @@
 <div
   *ngIf="!isScanning"
-  class="bg-base-200 h-fit inset-x-1/4 inset-y-1/4 m-auto py-48 text-center text-black"
+  class="bg-base-200 h-fit inset-x-1/4 inset-y-1/4 m-auto py-48 text-center"
 >
   <div class="container mx-auto p-1">
     <h1 class="font-bold text-2xl sm:text-3xl text-center">
@@ -24,7 +24,7 @@
         >
           <div class="relative flex">
             <span
-              class="inline-flex items-center rounded-l-md border-t border-l border-b border-gray-300 bg-base-100 px-3 text-sm text-base-content shadow-sm"
+              class="inline-flex items-center rounded-l-md border-t border-l border-b border-neutral bg-base-100 px-3 text-sm text-base-content shadow-sm"
             >
               http://
             </span>
@@ -33,7 +33,7 @@
               id="host"
               formControlName="host"
               required
-              class="w-full flex-1 appearance-none rounded-r-lg border border-gray-300 bg-base-100 py-2 px-4 text-base text-base-content placeholder-neutral-content shadow-sm focus:border-transparent focus:outline-none focus:ring-2"
+              class="w-full flex-1 appearance-none rounded-r-lg border border-neutral bg-base-100 py-2 px-4 text-base text-base-content placeholder-neutral-content shadow-sm focus:border-transparent focus:outline-none focus:ring-2"
               name="host"
               placeholder="jouw-website.nl"
             />

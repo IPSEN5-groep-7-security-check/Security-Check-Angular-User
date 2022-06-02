@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ThemeChangeService } from '../services/theme-change.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  constructor() {}
+  isDarkMode$ = this.themeChangeService.isDarkMode$;
+
+  constructor(private themeChangeService: ThemeChangeService) {}
 
   ngOnInit(): void {}
 }

@@ -4,7 +4,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { domainNameValidator } from '../validators/domain-name-validator';
 import stripProtocol from '../util/strip-protocol';
-import { HTTPService } from '../services/http.service';
+import { HTTPService } from '../services/http/http.service';
 
 @Component({
   selector: 'app-main-scan',

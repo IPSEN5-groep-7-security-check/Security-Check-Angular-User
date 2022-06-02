@@ -1,0 +1,13 @@
+input:checked + label .sun {
+  transform: translateX(-2.5rem);
+  opacity: 0;
+}
+
+input:checked + label .moon {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+input:checked + label .ball {
+  transform: translateX(2.5rem);
+}

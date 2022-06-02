@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Scan } from '../util/scan';
-import { Test } from '../util/test';
+import { Scan } from '../../util/scan';
+import { Test } from '../../util/test';
 import { catchError, throwError } from 'rxjs';
 
 @Injectable({

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HTTPService } from '../services/http.service';
+import { HTTPService } from '../services/http/http.service';
 import { Scan } from '../util/scan';
 
 @Component({
@@ -12,7 +12,6 @@ export class LoadScanComponent implements OnInit {
   constructor(private router: Router, private httpService: HTTPService) {}
   scanState?: Scan['state'];
   private scan: Scan | undefined;
-
 
   ngOnInit(): void {
     this.checkScanStatus();
@@ -63,13 +62,10 @@ export class LoadScanComponent implements OnInit {
   //   });
   // }
 
-
-
   // checkScan(): void {
   //   while(this.http.getScanState() != "FINISHED") { //pluck("state")?
   //     setTimeout(() => {}, 3000);
   //   }
   //   this.router.navigate(['/scan-results']);
   // }
-
 }

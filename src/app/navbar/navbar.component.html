@@ -1,4 +1,4 @@
-<div class="navbar h-16 bg-base-100 border-bottom border-2">
+<div class="navbar h-16 bg-base-100 border-b border-neutral">
   <div class="navbar-start">
     <div class="dropdown">
       <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -48,7 +48,11 @@
     <a href="/">
       <img
         class="h-12"
-        src="assets/logo.jpg"
+        [src]="
+          (isDarkMode$ | async)
+            ? 'assets/logos/Get-Big-Logo-Full-White.webp'
+            : 'assets/logos/Get-Big-Logo-Full-Black.webp'
+        "
         alt="Get Big Marketing & Webdesign"
       />
     </a>
@@ -80,6 +84,6 @@
     </ul>
   </div>
   <div class="navbar-end">
-    <app-dark-mode-toggle></app-dark-mode-toggle>
+    <app-theme-toggle></app-theme-toggle>
   </div>
 </div>
