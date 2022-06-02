@@ -17,14 +17,13 @@ body {
   background: var(--bkg-color);
 }
 
-.table tbody td,
-.table tbody th,
-.table thead th {
-  background-color: transparent;
+body.light-mode h1,
+body.light-mode h4 {
+  color: #000000;
 }
 
-.table * {
-  border: none;
+.h1-col-override {
+  color: #000000 !important;
 }
 
 body {
