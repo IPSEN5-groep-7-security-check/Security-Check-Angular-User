@@ -11,6 +11,7 @@ import { DarkModeToggleComponent } from './app-dark-mode-toggle/app-dark-mode-to
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     NavbarComponent,
     ErrorPageComponent,
     DarkModeToggleComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
