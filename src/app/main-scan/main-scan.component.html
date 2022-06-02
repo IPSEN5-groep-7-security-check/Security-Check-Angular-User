@@ -1,44 +1,37 @@
 <div
   *ngIf="!isScanning"
-  class="bg-base-200 h-screen inset-x-1/4 inset-y-1/4 m-auto py-48 text-center text-black"
+  class="min-w-max h-screen inset-x-1/4 inset-y-1/4 m-auto py-48 text-center text-black sm:w-32 md:w-32 lg:w-11/12"
 >
-  <div class="container mx-auto p-1">
-    <h1 class="font-bold text-2xl sm:text-3xl text-center">
-      Scan je website op kwetsbaarheden
-    </h1>
-    <h4
-      class="text-center text-neutral pb-5 text-md sm:text-lg mx-auto w-[40rem] max-w-fit"
-    >
-      Ontdek veel voorkomende kwetsbaarheden en kom erachter waar je website
-      veiliger kan worden met een Security Check.
-    </h4>
-  </div>
-  <div class="container mx-auto px-2">
-    <div class="card shadow-xl bg-base-100 w-max max-w-fit mx-auto">
-      <div class="card-body p-6 sm:p-8 text-left">
-        <form
-          [formGroup]="form"
-          (ngSubmit)="onSubmit()"
-          novalidate
-          class="space-y-2"
-        >
-          <div class="relative flex">
-            <span
-              class="inline-flex items-center rounded-l-md border-t border-l border-b border-gray-300 bg-base-100 px-3 text-sm text-base-content shadow-sm"
-            >
-              http://
-            </span>
-            <input
-              type="text"
-              id="host"
-              formControlName="host"
-              required
-              class="w-full flex-1 appearance-none rounded-r-lg border border-gray-300 bg-base-100 py-2 px-4 text-base text-base-content placeholder-neutral-content shadow-sm focus:border-transparent focus:outline-none focus:ring-2"
-              name="host"
-              placeholder="jouw-website.nl"
-            />
-          </div>
-          <div class="flex items-center space-x-3">
+  <h1 class="mx-auto font-bold text-3xl text-center">
+    Scan je website op kwetsbaarheden
+  </h1>
+  <h4 class="text-base-content pb-5">
+    Ontdek veel voorkomende kwetsbaarheden en kom erachter waar je website
+    veiliger kan worden met een Security Check
+  </h4>
+  <div
+    class="absolute h-max bg-base-100 inset-x-1/4 card shadow-xl mx-auto p-12"
+  >
+    <div class="card-body items-center text-center px-24">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+        <div class="relative flex">
+          <span
+            class="inline-flex items-center rounded-l-md border-t border-l border-b border-gray-300 bg-white px-3 text-sm text-gray-500 shadow-sm"
+          >
+            http(s)://
+          </span>
+          <input
+            type="text"
+            id="host"
+            formControlName="host"
+            required
+            class="w-max form-control flex-1 appearance-none rounded-r-lg border border-gray-300 bg-white py-2 px-4 text-base text-gray-700 placeholder-gray-400 shadow-sm focus:border-transparent focus:outline-none focus:ring-2"
+            name="host"
+            placeholder="jouwwebsite.nl"
+          />
+        </div>
+        <div class="form-control checkbox-align">
+          <label class="label cursor-pointer">
             <input
               type="checkbox"
               id="rescan"
@@ -58,26 +51,23 @@
               formControlName="acceptTerms"
               class="flex-shrink-0 form-check-input h-5 w-5 appearance-none rounded-md border-2 border-neutral bg-transparent checked:border-transparent checked:bg-neutral focus:outline-none transition duration-200 cursor-pointer"
             />
-            <label
-              for="acceptTerms"
-              class="form-check-label font-normal text-neutral"
-              >Ik ga akkoord met de
-              <a
-                class="link-primary"
-                href="https://getbigmarketing.nl/algemene-voorwaarden/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                voorwaarden</a
-              >
-            </label>
-          </div>
-
-          <div class="card-actions justify-center">
-            <button
-              type="button"
-              class="btn bg-primary text-base-100 sm:btn-wide"
-              (click)="onSubmit()"
+            <span class="label-text checkbox-text-align">
+              Ik heb goed de
+              <a class="link-primary" href="https://getbigmarketing.nl/algemene-voorwaarden/" target="_blank" rel="noopener noreferrer">voorwaarden</a> gelezen en ga ermee akkoord</span>
+          </label>
+        </div>
+        <div class="card-actions justify-center">
+          <button
+            type="button"
+            class="btn btn-wide bg-primary text-base-100"
+            (click)="onSubmit()"
+          >
+            <a>🔍 Start Scan</a>
+          </button>
+          <div>
+            <div
+              *ngIf="form.invalid && form.touched"
+              class="alert alert-error shadow-lg"
             >
               <svg
                 data-id="heroicon-solid"
