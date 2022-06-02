@@ -1,6 +1,6 @@
 <div
   *ngIf="!isScanning"
-  class="min-w-max h-screen bg-base-200 inset-x-1/4 inset-y-1/4 m-auto py-48 text-center text-black sm:w-32 md:w-32 lg:w-11/12"
+  class="min-w-max h-screen inset-x-1/4 inset-y-1/4 m-auto py-48 text-center text-black sm:w-32 md:w-32 lg:w-11/12"
 >
   <h1 class="mx-auto font-bold text-3xl text-center">
     Scan je website op kwetsbaarheden
@@ -27,20 +27,20 @@
             required
             class="w-max form-control flex-1 appearance-none rounded-r-lg border border-gray-300 bg-white py-2 px-4 text-base text-gray-700 placeholder-gray-400 shadow-sm focus:border-transparent focus:outline-none focus:ring-2"
             name="host"
-            placeholder="jouw-website.nl"
+            placeholder="jouwwebsite.nl"
           />
         </div>
         <div class="form-control checkbox-align">
-          <label class="label cursor-pointer">
-            <input
-              class="checkbox border-l-dark"
-              type="checkbox"
-              formControlName="rescan"
-            />
-            <span class="label-text checkbox-text-align"
+            <label class="label cursor-pointer">
+              <input
+                class="checkbox border-l-dark"
+                type="checkbox"
+                formControlName="rescan"
+              />
+              <span class="label-text checkbox-text-align"
               >Negeer resultaten uit de cache en forceer een nieuwe scan</span
-            >
-          </label>
+              >
+            </label>
         </div>
         <div class="form-control checkbox-align">
           <label class="label cursor-pointer">
@@ -49,17 +49,10 @@
               type="checkbox"
               formControlName="acceptTerms"
             />
-            <span class="label-text checkbox-text-align">
-              Ik ga akkoord met de
-              <a
-                class="link-primary"
-                href="https://getbigmarketing.nl/algemene-voorwaarden/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                voorwaarden</a
-              ></span
-            >
+          <span class="label-text checkbox-text-align">
+              Ik heb goed de
+              <a class="link-primary" href="https://getbigmarketing.nl/algemene-voorwaarden/" target="_blank" rel="noopener noreferrer">voorwaarden</a> gelezen en ga ermee akkoord
+          </span>
           </label>
         </div>
         <div class="card-actions justify-center">
@@ -89,10 +82,10 @@
                 />
               </svg>
               <span *ngIf="host.touched && host.invalid"
-                >De domein naam is incorrect.</span
+              >De domein naam is incorrect.</span
               >
               <span *ngIf="acceptTerms.invalid && host.valid"
-                >Je moet akkoord gaan met de voorwaarden.</span
+              >Je moet akkoord gaan met de voorwaarden.</span
               >
             </div>
           </div>

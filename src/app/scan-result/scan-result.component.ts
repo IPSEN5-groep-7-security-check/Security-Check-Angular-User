@@ -2,7 +2,6 @@ import { HTTPService } from '../services/http.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Report } from '@prisma/client';
 import { Observable, Subscription } from 'rxjs';
-import { FormControl, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-scan-result',
@@ -31,12 +30,17 @@ export class ScanResultComponent implements OnInit, OnDestroy {
     Validators.minLength(10)
   ]);
 
-  constructor(private httpService: HTTPService) {}
+  constructor(private httpService: HTTPService, private router: Router) {}
 
   ngOnInit(): void {
     // TODO: get the scan status response from the request made in the load-scan component
-    // Right now the request is made twice in a row for no apperant reason
-    const host = 'twitter.com';
+
+    // Navigate to home page on refresh
+    if(!this.httpService.tempHost) {
+      this.router.navigate(['/'])
+    }
+    const host = this.httpService.tempHost ?? "twitter.com";
+    // Right now the request is made twice in a row for no apparent reason
     this.scanSub = this.httpService.getScanStatus(host).subscribe((scan) => {
       const score = scan.score ?? 0;
       this.setResultColor(score);

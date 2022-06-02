@@ -1,0 +1,53 @@
+.green-color{
+  background: #00C65B;
+}
+
+.light-green-color{
+  background: #BED94C;
+}
+
+.yellow-color{
+  background: #FFE500;
+}
+
+.orange-color{
+  background: #FF9600;
+}
+
+.red-color{
+  background: #FF3925;
+}
+
+.rose-color{
+  background: #F597A9;
+}
+
+@media screen and (max-width: 1380px) {
+  .mobile {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 1160px) {
+  .mobile {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 865px) {
+  .mobile {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 695px) {
+  .mobile {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .mobile {
+    width: 100%;
+  }
+}
