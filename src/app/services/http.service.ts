@@ -45,6 +45,10 @@ export class HTTPService {
     });
   }
 
+  sendmail(user: { name: any; email: any }) {
+    return this.http.post(environment.apiUrl + '/sendemail', user)
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       console.error('An error occurred:', error.error);
@@ -58,4 +62,6 @@ export class HTTPService {
       () => new Error('Something bad happened; please try again later.')
     );
   }
+
+
 }
