@@ -71,7 +71,8 @@ export class ScanResultComponent implements OnInit, OnDestroy {
   sendEmail(){
     let user = {
       name: this.nameFormControl.value,
-      email: this.emailFormControl.value
+      email: this.emailFormControl.value,
+      host: this.httpService.tempHost
     }
     this.httpService.sendmail(user).subscribe(() =>{
       this.toggleModal();
