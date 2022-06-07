@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { catchError, Observable, throwError } from 'rxjs';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { domainNameValidator } from '../validators/domain-name-validator';
 import stripProtocol from '../util/strip-protocol';
 import { HTTPService } from '../services/http.service';
@@ -19,7 +17,7 @@ export class MainScanComponent implements OnInit {
     acceptTerms: [false, Validators.requiredTrue],
   });
 
-  constructor(private fb: FormBuilder, private httpService: HTTPService) {}
+  constructor(private fb: UntypedFormBuilder, private httpService: HTTPService) {}
 
   get formControls() {
     return this.form.controls;
