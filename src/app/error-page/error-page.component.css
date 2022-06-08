@@ -1,0 +1,16 @@
+.photowrap{
+  display: flex;
+  justify-content: center;
+}
+
+.photoscale{
+  width: 100%;
+  border-radius: 10px;
+  max-height: 50vh;
+}
+
+@media only screen and (max-width: 1023px){
+  .photoscale{
+    margin-top: 4vh;
+  }
+}
