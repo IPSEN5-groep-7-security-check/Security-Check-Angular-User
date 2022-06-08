@@ -14,6 +14,10 @@ module.exports = {
       colors: {
         dark: "#1A1A1A",
       },
+      screens: {
+        xs: "480px",
+        ...defaultTheme.screens,
+      },
     },
   },
   plugins: [
