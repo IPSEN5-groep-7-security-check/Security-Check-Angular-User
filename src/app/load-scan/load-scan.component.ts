@@ -13,7 +13,6 @@ export class LoadScanComponent implements OnInit {
   scanState?: Scan['state'];
   private scan: Scan | undefined;
 
-
   ngOnInit(): void {
     this.checkScanStatus();
   }
@@ -63,13 +62,10 @@ export class LoadScanComponent implements OnInit {
   //   });
   // }
 
-
-
   // checkScan(): void {
   //   while(this.http.getScanState() != "FINISHED") { //pluck("state")?
   //     setTimeout(() => {}, 3000);
   //   }
   //   this.router.navigate(['/scan-results']);
   // }
-
 }
