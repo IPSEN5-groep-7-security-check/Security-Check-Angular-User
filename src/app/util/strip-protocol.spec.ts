@@ -20,4 +20,12 @@ describe('stripProtocol', () => {
     const text = 'google.com';
     expect(stripProtocol(text)).toEqual(text);
   });
+  it('should remove trailing slash', () => {
+    const text = 'google.com/';
+    expect(stripProtocol(text)).toEqual('google.com');
+  });
+  it('should remove trailing slashes', () => {
+    const text = 'google.com///////';
+    expect(stripProtocol(text)).toEqual('google.com');
+  });
 });
