@@ -1,3 +1,4 @@
 export default function stripProtocol(value: string): string {
-  return value.replace(/^https?:\/\//i, '');
+  const withoutProtocol = value.replace(/^https?:\/\//i, '');
+  return withoutProtocol.replace(/\/+$/, '');
 }
