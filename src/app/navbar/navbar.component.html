@@ -19,7 +19,7 @@
       </label>
       <ul
         tabindex="0"
-        class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+        class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-col-override-dark"
       >
         <li>
           <a routerLink="/home">Home</a>
@@ -47,8 +47,12 @@
     </div>
     <a href="/">
       <img
-        class="h-12"
-        src="assets/logo.jpg"
+        class="h-12 w-12 object-cover object-left xs:w-auto xs:object-contain xs:object-center"
+        [src]="
+          (isDarkMode$ | async)
+            ? 'assets/logos/Get-Big-Logo-Full-White.webp'
+            : 'assets/logos/Get-Big-Logo-Full-Black.webp'
+        "
         alt="Get Big Marketing & Webdesign"
       />
     </a>

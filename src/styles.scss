@@ -3,18 +3,7 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-html,
 body {
-  min-height: 100vh;
-  height: auto;
-  margin: 0;
-  width: 100%;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-body {
-  margin: 0;
   background: var(--bkg-color);
 }
 
@@ -28,11 +17,6 @@ body {
   border: none;
 }
 
-body {
-  margin: 0;
-  height: 100%;
-}
-
 h1 {
   color: #000000;
 }
@@ -42,7 +26,7 @@ body:not(.dark-mode-preloading) {
 }
 
 body.dark-mode {
-  background-color: #2d3436;
+  background-color: #1E1E20;
   color: #dfe6e9;
   .bar-col {
     background-color: #000000;
@@ -67,7 +51,7 @@ body.light-mode h4 {
   color: #000000;
 }
 
-.h1-col-override {
+.text-col-override-dark {
   color: #000000 !important;
 }
 

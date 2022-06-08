@@ -47,12 +47,13 @@ export class HTTPService {
   }
 
   sendmail(user: { name: any; email: any; host: any }) {
-    console.log(user);
-    const encJsonUser = this.rsaHelper.encryptWithPublicKey(
-      JSON.stringify(user)
-    );
-    console.log(encJsonUser);
-    return this.http.post(environment.apiUrl + '/sendemail', encJsonUser);
+    // console.log(user);
+    // const encJsonUser = this.rsaHelper.encryptWithPublicKey(
+    //   JSON.stringify(user)
+    // );
+    // console.log(encJsonUser);
+    // return this.http.post(environment.apiUrl + '/sendemail', encJsonUser);
+    return this.http.post(environment.apiUrl + '/sendemail', user);
   }
 
   private handleError(error: HttpErrorResponse) {
