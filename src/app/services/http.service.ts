@@ -45,7 +45,7 @@ export class HTTPService {
     });
   }
 
-  sendmail(user: { name: any; email: any; host: any}) {
+  sendmail(user: { name: any; email: any }) {
     return this.http.post(environment.apiUrl + '/sendemail', user)
   }
 
