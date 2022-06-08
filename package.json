@@ -21,7 +21,6 @@
     "@tailwindcss/typography": "^0.5.2",
     "angular-dark-mode": "^3.0.2",
     "daisyui": "^2.15.2",
-    "hybrid-crypto-js": "^0.2.4",
     "is-valid-domain": "^0.1.6",
     "psl": "^1.8.0",
     "rxjs": "~7.5.0",
