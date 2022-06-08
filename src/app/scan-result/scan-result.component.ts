@@ -1,7 +1,6 @@
 import { HTTPService } from '../services/http.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Report } from '@prisma/client';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import {FormControl, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 
