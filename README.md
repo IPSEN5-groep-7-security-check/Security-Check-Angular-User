@@ -20,13 +20,9 @@ Run `npm install -D tailwindcss`, `npx tailwindcss init` for Tailwind.
 
 Run `npm i daisyui` for Daisy UI
 
-## angular-dark-mode
+## Running unit tests
 
-Run `npm i angular-dark-mode --force` for Angular Dark Mode
-
-## angular-crypto
-source: https://www.npmjs.com/package/hybrid-crypto-js
-Run `npm install hybrid-crypto-js --force` for Angular Dark Mode
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ## angular-dark-mode
 
