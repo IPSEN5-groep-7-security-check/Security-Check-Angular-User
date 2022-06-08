@@ -62,17 +62,19 @@ export class ScanResultComponent implements OnInit, OnDestroy {
     }
   }
 
-  sendEmail() {
+  sendEmail(){
     let user = {
       name: this.nameFormControl.value,
       email: this.emailFormControl.value,
-    };
-    this.httpService.sendmail(user).subscribe(() => {
+      host: this.httpService.tempHost
+    }
+    this.httpService.sendmail(user).subscribe(() =>{
       this.toggleModal();
     });
+
   }
 
-  toggleModal() {
+  toggleModal(){
     this.showModal = !this.showModal;
   }
 }
