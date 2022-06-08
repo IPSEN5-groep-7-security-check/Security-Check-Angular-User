@@ -4,12 +4,13 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Scan } from '../util/scan';
 import { Test } from '../util/test';
 import { catchError, throwError } from 'rxjs';
+import { RSAHelper } from '../rsaHelper';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HTTPService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private rsaHelper: RSAHelper) {}
 
   tempHost?: string;
 
@@ -45,8 +46,13 @@ export class HTTPService {
     });
   }
 
-  sendmail(user: { name: any; email: any; host: any}) {
-    return this.http.post(environment.apiUrl + '/sendemail', user)
+  sendmail(user: { name: any; email: any; host: any }) {
+    console.log(user);
+    const encJsonUser = this.rsaHelper.encryptWithPublicKey(
+      JSON.stringify(user)
+    );
+    console.log(encJsonUser);
+    return this.http.post(environment.apiUrl + '/sendemail', encJsonUser);
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -62,6 +68,4 @@ export class HTTPService {
       () => new Error('Something bad happened; please try again later.')
     );
   }
-
-
 }
