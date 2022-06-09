@@ -1,13 +1,10 @@
-<div
-  *ngIf="!isScanning"
-  class="h-screen inset-x-1/4 inset-y-1/4 m-auto py-48 text-center text-black"
->
-  <div class="container mx-auto p-1">
-    <h1 class="font-bold text-2xl sm:text-3xl text-center">
+<main *ngIf="!isScanning" class="m-auto space-y-6 py-16">
+  <div class="container mx-auto px-1 space-y-1">
+    <h1 class="font-bold text-2xl sm:text-3xl text-center mx-auto max-w-prose">
       Scan je website op kwetsbaarheden
     </h1>
     <h4
-      class="text-center text-neutral pb-5 text-md sm:text-lg mx-auto w-[40rem] max-w-fit"
+      class="text-center text-neutral text-md sm:text-lg mx-auto max-w-[55ch]"
     >
       Ontdek veel voorkomende kwetsbaarheden en kom erachter waar je website
       veiliger kan worden met een Security Check.
@@ -15,7 +12,7 @@
   </div>
   <div class="container mx-auto px-2">
     <div class="card shadow-xl bg-base-100 w-max max-w-fit mx-auto">
-      <div class="card-body p-6 sm:p-8 text-left">
+      <div class="card-body p-4 sm:p-8 text-left">
         <form
           [formGroup]="form"
           (ngSubmit)="onSubmit()"
@@ -97,11 +94,8 @@
               <a>Start Scan</a>
             </button>
           </div>
-          <div class="card-actions">
-            <div
-              *ngIf="form.invalid && form.touched"
-              class="alert alert-error shadow-lg"
-            >
+          <div class="card-actions" *ngIf="form.invalid && form.touched">
+            <div class="alert alert-error shadow-lg">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -129,5 +123,5 @@
       </div>
     </div>
   </div>
-</div>
+</main>
 <app-load-scan *ngIf="isScanning"></app-load-scan>

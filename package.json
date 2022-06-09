@@ -1,5 +1,5 @@
 {
-  "name": "ipsen4-demo",
+  "name": "Security-Check-Angular-User",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -21,8 +21,8 @@
     "@tailwindcss/typography": "^0.5.2",
     "angular-dark-mode": "^3.0.2",
     "daisyui": "^2.15.2",
-    "hybrid-crypto-js": "^0.2.4",
     "is-valid-domain": "^0.1.6",
+    "node-forge": "^1.3.1",
     "psl": "^1.8.0",
     "rxjs": "~7.5.0",
     "theme-change": "^2.0.2",
@@ -37,6 +37,7 @@
     "@prisma/client": "^3.14.0",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
+    "@types/node-forge": "^1.0.2",
     "@types/psl": "^1.1.0",
     "jasmine-core": "~4.0.0",
     "karma": "~6.3.0",
