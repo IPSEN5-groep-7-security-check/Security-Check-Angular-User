@@ -4,13 +4,12 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Scan } from '../util/scan';
 import { Test } from '../util/test';
 import { catchError, throwError } from 'rxjs';
-import { RSAHelper } from '../rsaHelper';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HTTPService {
-  constructor(private http: HttpClient, private rsaHelper: RSAHelper) {}
+  constructor(private http: HttpClient) {}
 
   tempHost?: string;
 
@@ -48,12 +47,17 @@ export class HTTPService {
 
   sendmail(user: { name: any; email: any; host: any }) {
     console.log(user);
-    const encJsonUser = this.rsaHelper.encryptWithPublicKey(
-      JSON.stringify(user)
-    );
-    console.log(encJsonUser);
-    return this.http.post(environment.apiUrl + '/sendemail', encJsonUser);
+    return this.http.post(environment.apiUrl + '/sendemail', user);
   }
+
+  // sendmail(user: { name: any; email: any; host: any }) {
+  //   console.log(user);
+  //   const encJsonUser = this.rsaHelper.encryptWithPublicKey(
+  //       JSON.stringify(user)
+  //   );
+  //   console.log(encJsonUser);
+  //   return this.http.post(environment.apiUrl + '/sendemail', encJsonUser);
+  // }
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
