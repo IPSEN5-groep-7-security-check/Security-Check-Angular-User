@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Data } from '@angular/router';
 
 @Component({
   selector: 'app-error-page',
@@ -7,20 +6,14 @@ import { ActivatedRoute, Data } from '@angular/router';
   styleUrls: ['./error-page.component.css'],
 })
 export class ErrorPageComponent implements OnInit {
-  pickedPhoto?: string;
+  pickedPhoto!: number;
 
-  errorPhotos: string[] = [
-    'assets/404Photos/error_01.webp',
-    'assets/404Photos/error_02.jpg',
-  ];
   constructor() {}
 
   ngOnInit(): void {
-    this.pickedPhoto = this.randomErrorPhoto();
+    this.randomErrorPhoto();
   }
-
   randomErrorPhoto() {
-    let randomIndex = Math.floor(Math.random() * this.errorPhotos.length);
-    return this.errorPhotos[randomIndex];
+    return this.pickedPhoto = Math.random();
   }
 }
