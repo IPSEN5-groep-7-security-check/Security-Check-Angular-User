@@ -1,7 +1,7 @@
 <div class="flex items-center justify-center h-screen">
   <div class="px-4 lg:py-12">
     <div class="lg:gap-4 lg:flex">
-      <div class="flex flex-col items-center justify-center lg:py-32">
+      <div class="flex flex-col items-center justify-center  lg:py-32">
         <h1 class="font-bold text-primary text-9xl">404</h1>
         <p
           class="mb-2 text-2xl font-bold text-center text-gray-800 md:text-3xl"
@@ -15,13 +15,18 @@
           Terug naar home!
         </button>
       </div>
-      <div class="mt-4 flex justify-center">
-        <img
-          class="object-cover w-fit rounded-xl"
-          src="{{ pickedPhoto }}"
-          alt="Error 404!"
-        />
-      </div>
+        <div class="mt-4 flex justify-center" *ngIf="pickedPhoto >= 0.5">
+          <img class="object-cover w-fit rounded-xl"
+                  src="../../assets/404Photos/error_01_cat.webp"
+                  alt="Error 404 Cat!"
+          />
+        </div>
+        <div class="mt-4 flex justify-center" *ngIf="pickedPhoto <= 0.5">
+          <img class="object-cover w-2/5 lg:w-3/5 rounded-xl"
+                  src="../../assets/404Photos/error_02_404.jpg"
+                  alt="Error 404!"
+          />
+        </div>
     </div>
   </div>
 </div>
