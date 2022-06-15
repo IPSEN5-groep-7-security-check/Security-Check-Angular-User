@@ -17,21 +17,6 @@ export class ScanResultComponent implements OnInit, OnDestroy {
   showModal = false;
   successMessage = true;
 
-
-  nameFormControl = new FormControl("", [
-    Validators.required
-  ]);
-
-  emailFormControl = new FormControl("", [
-    Validators.required,
-    Validators.email,
-    Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")
-  ]);
-
-  phoneFormControl = new FormControl("", [
-    Validators.minLength(10)
-  ]);
-
   constructor(private httpService: HTTPService, private router: Router) {}
 
   ngOnInit(): void {
@@ -66,18 +51,6 @@ export class ScanResultComponent implements OnInit, OnDestroy {
     } else {
       this.color = 'red-color';
     }
-  }
-
-  sendEmail(){
-    let user = {
-      name: this.nameFormControl.value,
-      email: this.emailFormControl.value,
-      host: this.httpService.tempHost
-    }
-    this.httpService.sendmail(user).subscribe(() =>{
-      this.toggleModal();
-    });
-
   }
 
   toggleModal(){
