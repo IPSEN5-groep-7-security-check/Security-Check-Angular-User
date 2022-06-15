@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ErrorPageComponent } from './error-page.component';
+import assert from "assert";
 
 describe('ErrorPageComponent', () => {
   let component: ErrorPageComponent;
@@ -21,4 +22,8 @@ describe('ErrorPageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('pickedPhoto number should be random and betweeen 0 and 1',() => {
+    let randomNumber = component.randomErrorPhoto();
+    assert(randomNumber != 0 && randomNumber >=0 && randomNumber <= 1);
+  })
 });
