@@ -13,6 +13,7 @@ import { DarkModeToggleComponent } from './app-dark-mode-toggle/app-dark-mode-to
 import { FooterComponent } from './footer/footer.component';
 import { ErrorPageComponent } from "./error-page/error-page.component";
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,7 @@ import { ErrorPageComponent } from "./error-page/error-page.component";
     NavbarComponent,
     DarkModeToggleComponent,
     FooterComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,
