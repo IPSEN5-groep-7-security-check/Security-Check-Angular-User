@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import * as Forge from 'node-forge';
 
 @Injectable({
@@ -24,6 +24,6 @@ nONTSHJqdjUnj6gDYsQjX8MCAwEAAQ==
 
   encryptWithPublicKey(valueToEncrypt: string): string {
     const rsa = Forge.pki.publicKeyFromPem(this.publicKey);
-    return window.btoa(rsa.encrypt(valueToEncrypt.toString()));
+    return rsa.encrypt(valueToEncrypt.toString());
   }
 }

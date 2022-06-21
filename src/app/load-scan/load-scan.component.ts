@@ -10,7 +10,7 @@ import { Scan } from '../util/scan';
 })
 export class LoadScanComponent implements OnInit {
   constructor(private router: Router, private httpService: HTTPService) {}
-  scanState?: Scan['state'];
+  // scanState?: Scan['state'];
   private scan: Scan | undefined;
 
   ngOnInit(): void {

@@ -44,11 +44,11 @@ export class MainScanComponent implements OnInit {
       next: (scan) => {
         console.log('DATA: ', scan);
         console.log('SCAN_ID: ', scan.scan_id);
-        console.log('SCAN_ID: ', scan.state);
+        console.log('SCAN_STATE: ', scan.state);
         this.isScanning = true;
       },
       error: (error) => {
-        console.error('There was an error!', error);
+        console.error('There was an error! ', error);
       },
     });
   }

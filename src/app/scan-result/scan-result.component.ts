@@ -14,7 +14,6 @@ export class ScanResultComponent implements OnInit, OnDestroy {
   score?: number;
   color: string = '';
   showModal = false;
-  successMessage = true;
 
   nameFormControl = new FormControl('', [Validators.required]);
 
@@ -33,9 +32,9 @@ export class ScanResultComponent implements OnInit, OnDestroy {
 
     // Navigate to home page on refresh
     if (!this.httpService.tempHost) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/']).then(() => {});
     }
-    const host = this.httpService.tempHost ?? 'twitter.com';
+    const host = this.httpService.tempHost?? "";
     // Right now the request is made twice in a row for no apparent reason
     this.scanSub = this.httpService.getScanStatus(host).subscribe((scan) => {
       const score = scan.score ?? 0;
