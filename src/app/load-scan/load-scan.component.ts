@@ -13,11 +13,11 @@ export class LoadScanComponent implements OnInit {
   private scan: Scan | undefined;
 
   ngOnInit(): void {
-    this.checkScanStatus().then(r => console.log(r));
+    this.checkScanStatus().then(() => {});
   }
 
   async checkScanStatus() {
-    const host = this.httpService.tempHost; // TODO: get this from somewhere
+    const host = this.httpService.tempHost;
     if (host != null) {
       this.scan = await this.httpService.getScanStatus(host).toPromise();
     }
