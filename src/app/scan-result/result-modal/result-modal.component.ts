@@ -29,8 +29,6 @@ export class ResultModalComponent implements OnInit {
   ngOnInit(): void {}
 
   sendEmail() {
-    // this.nameFormControl.markAsTouched();
-    // this.emailFormControl.markAsTouched();
     this.hasClickedSubmit = true;
     if (
       this.nameFormControl.invalid ||

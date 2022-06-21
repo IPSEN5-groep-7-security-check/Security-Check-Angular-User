@@ -1,8 +1,6 @@
 import { HTTPService } from '../services/http.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Report } from '@prisma/client';
-import { Observable, Subscription } from 'rxjs';
-import {FormControl, Validators} from "@angular/forms";
+import { Subscription } from 'rxjs';
 import {Router} from "@angular/router";
 
 @Component({
@@ -19,8 +17,6 @@ export class ScanResultComponent implements OnInit, OnDestroy {
   constructor(private httpService: HTTPService, private router: Router) {}
 
   ngOnInit(): void {
-    // TODO: get the scan status response from the request made in the load-scan component
-
     // Navigate to home page on refresh
 
     if (!this.httpService.tempHost) {
@@ -52,17 +48,6 @@ export class ScanResultComponent implements OnInit, OnDestroy {
     } else {
       this.color = 'red-color';
     }
-  }
-
-  sendEmail() {
-    let user = {
-      name: this.nameFormControl.value,
-      email: this.emailFormControl.value,
-      host: this.httpService.tempHost,
-    };
-    this.httpService.sendmail(user).subscribe(() => {
-      this.toggleModal();
-    });
   }
 
   toggleModal(){
