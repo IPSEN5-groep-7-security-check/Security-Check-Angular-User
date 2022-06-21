@@ -1,12 +1,6 @@
-a {
-  color: #0693e3;
-}
 a:hover {
   color: black;
   transition: 1s;
-}
-.center {
-  text-align: center;
 }
 .colorize {
   background-color: #f597a9;
@@ -27,3 +21,11 @@ a:hover {
   background-color: #ffc501;
   color: white;
 }
+
+@media only screen and (max-width: 900px){
+  button {
+    text-align: left;
+  }
+
+}
+

@@ -1,0 +1,113 @@
+<div
+  *ngIf="scanResult.showModal"
+  class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex"
+>
+  <div class="relative w-auto my-6 mx-auto max-w-6xl">
+    <div
+      class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none"
+    >
+      <div
+        class="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t"
+      >
+        <h3 class="text-3xl font-semibold">Vul je gegevens in a.u.b</h3>
+        <button
+          class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+          (click)="scanResult.toggleModal()"
+        >
+          <span
+            class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none"
+          >
+            ×
+          </span>
+        </button>
+      </div>
+      <div class="relative p-6 flex-auto">
+        <div class="mb-4">
+          <label
+            class="block text-gray-700 text-sm font-bold mb-2"
+            for="username"
+          >
+            Naam*
+          </label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="username"
+            type="text"
+            placeholder="Naam"
+            [formControl]="nameFormControl"
+          />
+          <div *ngIf="nameFormControl.invalid && hasClickedSubmit">
+            <small class="text-danger">Een naam is verplicht</small>
+          </div>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+            E-mail*
+          </label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            id="email"
+            type="email"
+            placeholder="E-mail"
+            [formControl]="emailFormControl"
+          />
+          <div *ngIf="emailFormControl.invalid && hasClickedSubmit">
+            <small
+              *ngIf="emailFormControl.errors?.['required']"
+              class="text-danger"
+              >Een E-mailadres is verplicht</small
+            >
+            <small
+              *ngIf="emailFormControl.errors?.['pattern']"
+              class="text-danger"
+              >Vul een valide mail adres in</small
+            >
+          </div>
+        </div>
+        <div class="mb-4">
+          <label
+            class="block text-gray-700 text-sm font-bold mb-2"
+            for="phonenumber"
+          >
+            Telefoonnummer
+          </label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="phonenumber"
+            type="text"
+            placeholder="Telefoonnummer"
+            [formControl]="phoneFormControl"
+          />
+          <div
+            *ngIf="
+              hasClickedSubmit &&
+              phoneFormControl.invalid &&
+              phoneFormControl.touched &&
+              phoneFormControl.dirty
+            "
+          >
+            <small class="text-danger">Het nummer klopt niet.</small>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex items-center justify-center p-6 border-t border-solid border-slate-200 rounded-b"
+      >
+        <button
+          class="text-gray-700 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button"
+          (click)="scanResult.toggleModal()"
+        >
+          Sluiten
+        </button>
+        <button class="btn-gbm" type="button" (click)="sendEmail()">
+          Verstuur
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  *ngIf="scanResult.showModal"
+  class="opacity-50 blur-3xl fixed inset-0 z-40 bg-black"
+></div>

@@ -3,7 +3,7 @@ import { environment } from '../../environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Scan } from '../util/scan';
 import { catchError, throwError } from 'rxjs';
-import { RSAHelper } from "../rsaHelper";
+import { RSAHelper } from '../rsaHelper';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,7 @@ import { RSAHelper } from "../rsaHelper";
 export class HTTPService {
   constructor(private http: HttpClient, private rsaHelper: RSAHelper) {}
 
-  tempHost!: string;
+  tempHost = '';
 
   startScan(host: string, rescan: boolean | null) {
     this.tempHost = host;
@@ -33,15 +33,14 @@ export class HTTPService {
     });
   }
 
-  sendmail(user: { name: string, email: string, host: string }) {
-
-    console.log("USER: " + JSON.stringify(user));
+  sendmail(user: { name: string; email: string; host: string }) {
+    console.log('USER: ' + JSON.stringify(user));
     const encryptedUser = {
       name: this.rsaHelper.encryptWithPublicKey(user.name),
       email: this.rsaHelper.encryptWithPublicKey(user.email),
-      host: this.rsaHelper.encryptWithPublicKey(user.host)
-    }
-    console.log("ENCRYPTED CRAP: " + JSON.stringify(encryptedUser));
+      host: this.rsaHelper.encryptWithPublicKey(user.host),
+    };
+    console.log('ENCRYPTED CRAP: ' + JSON.stringify(encryptedUser));
     return this.http.post(environment.apiUrl + '/sendemail', encryptedUser);
   }
 
