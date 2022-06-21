@@ -1,6 +1,0 @@
-{
-  "/api": {
-    "target": "https://security-check-express-user.vercel.app/",
-    "secure": false
-  }
-}

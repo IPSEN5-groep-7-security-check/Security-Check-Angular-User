@@ -68,12 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "IPSEN4Demo:build:production",
-              "proxyConfig": "src/proxy.conf.json"
+              "browserTarget": "IPSEN4Demo:build:production"
             },
             "development": {
-              "browserTarget": "IPSEN4Demo:build:development",
-              "proxyConfig": "src/proxy.conf.json"
+              "browserTarget": "IPSEN4Demo:build:development"
             }
           },
           "defaultConfiguration": "development"
