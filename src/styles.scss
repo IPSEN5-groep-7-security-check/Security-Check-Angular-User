@@ -3,6 +3,40 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@mixin font-face($name, $folder, $fileinfo: "", $weight: 400, $style: normal) {
+  @font-face {
+    font-family: $name;
+    src: url(quote(
+        "/assets/fonts/" + $folder + "/" + $folder + $fileinfo + ".woff"
+      )),
+      url(quote("/assets/fonts/" + $folder + $folder + $fileinfo + ".woff"));
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
+
+@include font-face("Geometos Rounded", "geometos-rounded");
+@include font-face("Nunito Sans", "nunito-sans", "-v11-latin-regular");
+@include font-face("Nunito Sans", "nunito-sans", "-v11-latin-700", 700);
+@include font-face(
+  "Nunito Sans",
+  "nunito-sans",
+  "-v11-latin-italic",
+  400,
+  italic
+);
+@include font-face(
+  "Nunito Sans",
+  "nunito-sans",
+  "-v11-latin-700italic",
+  700,
+  italic
+);
+
+.btn {
+  @apply border-none font-lunchbox;
+}
+
 body {
   background: var(--bkg-color);
 }
@@ -26,7 +60,7 @@ body:not(.dark-mode-preloading) {
 }
 
 body.dark-mode {
-  background-color: #1E1E20;
+  background-color: #1e1e20;
   color: #dfe6e9;
   .bar-col {
     background-color: #000000;

@@ -8,8 +8,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"PT Sans"', ...defaultTheme.fontFamily.sans],
-        heading: ['"Lunchbox"'],
+        sans: ['"Nunito Sans"', ...defaultTheme.fontFamily.sans],
+        heading: ['"Geometos Rounded"', ...defaultTheme.fontFamily.sans],
+        lunchbox: ['"Geometos Rounded"', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         dark: "#1A1A1A",
