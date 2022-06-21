@@ -4,7 +4,7 @@
 
 export const environment = {
   production: true,
-  apiUrl: '//localhost:8080',
+  apiUrl: 'https://security-check-express-user.vercel.app/',
 };
 
 /*
