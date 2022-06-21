@@ -2,7 +2,7 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environmentprod = {
+export const environment = {
   production: true,
   apiUrl: 'https://security-check-express-user.vercel.app/'
 };
