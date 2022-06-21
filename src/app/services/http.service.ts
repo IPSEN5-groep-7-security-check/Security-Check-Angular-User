@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { environmentprod } from '../../environments/environment.prod';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import { Scan } from '../util/scan';
 import { catchError, throwError } from 'rxjs';
 import { RSAHelper } from "../rsaHelper";
@@ -10,14 +11,15 @@ import { RSAHelper } from "../rsaHelper";
   providedIn: 'root',
 })
 export class HTTPService {
-  constructor(private http: HttpClient, private rsaHelper: RSAHelper) {}
+  constructor(private http: HttpClient, private rsaHelper: RSAHelper) {
+  }
 
   tempHost!: string;
 
   startScan(host: string, rescan: boolean | null) {
     this.tempHost = host;
     return this.http
-      .post<Scan>(environment.apiUrl + '/api/v1/analyze', null, {
+      .post<Scan>(environmentprod.apiUrl + '/api/v1/analyze', null, {
         params: {
           host: host,
           rescan: rescan ? 'true' : 'false',
@@ -27,7 +29,7 @@ export class HTTPService {
   }
 
   getScanStatus(host: string) {
-    return this.http.get<Scan>(environment.apiUrl + '/api/v1/analyze', {
+    return this.http.get<Scan>(environmentprod.apiUrl + '/api/v1/analyze', {
       params: {
         host: host,
       },
@@ -41,7 +43,7 @@ export class HTTPService {
       email: this.rsaHelper.encryptWithPublicKey(user.email),
       host: this.rsaHelper.encryptWithPublicKey(user.host)
     }
-    return this.http.post(environment.apiUrl + '/sendemail', encryptedUser);
+    return this.http.post(environmentprod.apiUrl + '/sendemail', encryptedUser);
   }
 
   private handleError(error: HttpErrorResponse) {
