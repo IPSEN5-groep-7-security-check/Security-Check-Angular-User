@@ -35,6 +35,7 @@
 
 .btn {
   @apply border-none font-geometos;
+  @apply hover:bg-gradient-to-r hover:from-primary ease-in-out hover:to-secondary duration-500 bg-primary;
 }
 
 body {
