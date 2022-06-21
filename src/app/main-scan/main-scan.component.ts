@@ -49,7 +49,7 @@ export class MainScanComponent implements OnInit {
         this.isScanning = true;
       },
       error: (error) => {
-        console.error('There was an error!', error);
+        console.error('There was an error! ', error);
       },
     });
   }

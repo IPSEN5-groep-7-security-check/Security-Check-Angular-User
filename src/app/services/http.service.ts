@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Scan } from '../util/scan';
-import { Test } from '../util/test';
 import { catchError, throwError } from 'rxjs';
-import { RSAHelper } from '../rsaHelper';
+import { RSAHelper } from "../rsaHelper";
+
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +12,7 @@ import { RSAHelper } from '../rsaHelper';
 export class HTTPService {
   constructor(private http: HttpClient, private rsaHelper: RSAHelper) {}
 
-  tempHost?: string;
+  tempHost!: string;
 
   startScan(host: string, rescan: boolean | null) {
     this.tempHost = host;
@@ -34,26 +34,16 @@ export class HTTPService {
     });
   }
 
-  /*   Each scan consists of a variety of subtests, including Content Security
-  Policy, Subresource Integrity, etc. The results of all these tests can be
-  retrieved once the scan's state has been placed in the FINISHED state. It
-  will return a single tests object. */
-  getScanResult(scanId: number) {
-    return this.http.get<Test>(environment.apiUrl + '/api/v1/getScanResults', {
-      params: {
-        scan: scanId,
-      },
-    });
-  }
+  sendmail(user: { name: string, email: string, host: string }) {
 
-  sendmail(user: { name: any; email: any; host: any }) {
-    // console.log(user);
-    // const encJsonUser = this.rsaHelper.encryptWithPublicKey(
-    //   JSON.stringify(user)
-    // );
-    // console.log(encJsonUser);
-    // return this.http.post(environment.apiUrl + '/sendemail', encJsonUser);
-    return this.http.post(environment.apiUrl + '/sendemail', user);
+    console.log("USER: " + JSON.stringify(user));
+    const encryptedUser = {
+      name: this.rsaHelper.encryptWithPublicKey(user.name),
+      email: this.rsaHelper.encryptWithPublicKey(user.email),
+      host: this.rsaHelper.encryptWithPublicKey(user.host)
+    }
+    console.log("ENCRYPTED CRAP: " + JSON.stringify(encryptedUser));
+    return this.http.post(environment.apiUrl + '/sendemail', encryptedUser);
   }
 
   private handleError(error: HttpErrorResponse) {
