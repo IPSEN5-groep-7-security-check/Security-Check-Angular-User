@@ -21,3 +21,11 @@ a:hover {
   background-color: #ffc501;
   color: white;
 }
+
+@media only screen and (max-width: 900px){
+  button {
+    text-align: left;
+  }
+
+}
+
