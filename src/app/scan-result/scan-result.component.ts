@@ -15,6 +15,7 @@ export class ScanResultComponent implements OnInit, OnDestroy {
   score?: number;
   color: string = '';
   showModal = false;
+  successMessage = true;
 
   constructor(private httpService: HTTPService, private router: Router) {}
 
@@ -22,12 +23,10 @@ export class ScanResultComponent implements OnInit, OnDestroy {
     // TODO: get the scan status response from the request made in the load-scan component
 
     // Navigate to home page on refresh
-
-    if (!this.httpService.tempHost) {
-      this.router.navigate(['/']).then(() => {});
+    if(!this.httpService.tempHost) {
+      this.router.navigate(['/'])
     }
-    const host = this.httpService.tempHost ?? "";
-
+    const host = this.httpService.tempHost ?? "twitter.com";
     // Right now the request is made twice in a row for no apparent reason
     this.scanSub = this.httpService.getScanStatus(host).subscribe((scan) => {
       const score = scan.score ?? 0;
@@ -52,17 +51,6 @@ export class ScanResultComponent implements OnInit, OnDestroy {
     } else {
       this.color = 'red-color';
     }
-  }
-
-  sendEmail() {
-    let user = {
-      name: this.nameFormControl.value,
-      email: this.emailFormControl.value,
-      host: this.httpService.tempHost,
-    };
-    this.httpService.sendmail(user).subscribe(() => {
-      this.toggleModal();
-    });
   }
 
   toggleModal(){

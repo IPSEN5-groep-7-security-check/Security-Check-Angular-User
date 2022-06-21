@@ -24,6 +24,6 @@ nONTSHJqdjUnj6gDYsQjX8MCAwEAAQ==
 
   encryptWithPublicKey(valueToEncrypt: string): string {
     const rsa = Forge.pki.publicKeyFromPem(this.publicKey);
-    return rsa.encrypt(valueToEncrypt.toString());
+    return window.btoa(rsa.encrypt(valueToEncrypt.toString()));
   }
 }
