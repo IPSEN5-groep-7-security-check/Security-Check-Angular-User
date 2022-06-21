@@ -36,17 +36,8 @@
             placeholder="Naam"
             [formControl]="nameFormControl"
           />
-          <div
-            *ngIf="
-              (nameFormControl.invalid && nameFormControl.touched) ||
-              nameFormControl.dirty
-            "
-          >
-            <small
-              *ngIf="nameFormControl.errors?.['required']"
-              class="text-danger"
-              >Een naam is verplicht</small
-            >
+          <div *ngIf="nameFormControl.invalid && hasClickedSubmit">
+            <small class="text-danger">Een naam is verplicht</small>
           </div>
         </div>
         <div class="mb-4">
@@ -60,12 +51,7 @@
             placeholder="E-mail"
             [formControl]="emailFormControl"
           />
-          <div
-            *ngIf="
-              (emailFormControl.invalid && emailFormControl.touched) ||
-              emailFormControl.dirty
-            "
-          >
+          <div *ngIf="emailFormControl.invalid && hasClickedSubmit">
             <small
               *ngIf="emailFormControl.errors?.['required']"
               class="text-danger"
@@ -94,15 +80,13 @@
           />
           <div
             *ngIf="
-              (phoneFormControl.invalid && phoneFormControl.touched) ||
+              hasClickedSubmit &&
+              phoneFormControl.invalid &&
+              phoneFormControl.touched &&
               phoneFormControl.dirty
             "
           >
-            <small
-              *ngIf="phoneFormControl.errors?.['minLength']"
-              class="text-danger"
-              >Het nummer klopt niet.</small
-            >
+            <small class="text-danger">Het nummer klopt niet.</small>
           </div>
         </div>
       </div>

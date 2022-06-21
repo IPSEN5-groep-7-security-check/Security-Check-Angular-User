@@ -96,7 +96,7 @@
               Start Scan
             </button>
           </div>
-          <div class="card-actions" *ngIf="form.invalid && form.touched">
+          <div class="card-actions" *ngIf="form.invalid && hasClickedSubmit">
             <div class="alert alert-error shadow-lg">
               <div>
                 <svg
@@ -112,9 +112,7 @@
                     d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <span *ngIf="host.touched && host.invalid"
-                  >De domein naam is incorrect.</span
-                >
+                <span *ngIf="host.invalid">De domein naam is incorrect.</span>
                 <span *ngIf="acceptTerms.invalid && host.valid"
                   >Je moet akkoord gaan met de voorwaarden.</span
                 >
