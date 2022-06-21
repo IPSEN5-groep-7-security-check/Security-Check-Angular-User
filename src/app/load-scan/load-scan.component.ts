@@ -14,7 +14,7 @@ export class LoadScanComponent implements OnInit {
   private scan: Scan | undefined;
 
   ngOnInit(): void {
-    this.checkScanStatus();
+    this.checkScanStatus().then(r => console.log(r));
   }
 
   async checkScanStatus() {
@@ -24,11 +24,11 @@ export class LoadScanComponent implements OnInit {
     }
     const state = this.scan?.state;
     if (state === 'FINISHED') {
-      this.router.navigate(['/scan-result']);
+      await this.router.navigate(['/scan-result']);
     } else if (state === 'ABORTED' || state === 'FAILED') {
       console.error('Scan failed');
       // TODO: handle error state
-      this.router.navigate(['/home']); // Navigate to home for now
+      await this.router.navigate(['/home']); // Navigate to home for now
     } else {
       setTimeout(() => {
         this.checkScanStatus();
