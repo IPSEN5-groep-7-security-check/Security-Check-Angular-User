@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-// import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment';
 import { environmentprod } from '../../environments/environment.prod';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import { Scan } from '../util/scan';
