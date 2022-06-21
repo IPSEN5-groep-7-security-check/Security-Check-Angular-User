@@ -11,6 +11,7 @@ import { HTTPService } from '../services/http.service';
 })
 export class MainScanComponent implements OnInit {
   isScanning = false;
+  hasClickedSubmit = false;
   form = this.fb.group({
     host: ['', [Validators.required, domainNameValidator()]],
     rescan: [false],
@@ -36,19 +37,19 @@ export class MainScanComponent implements OnInit {
   }
 
   onSubmit() {
-    this.host.markAsTouched();
+    this.hasClickedSubmit = true;
+    if (this.form.invalid) {
+      return;
+    }
     const formHost = this.host.value;
     const host = stripProtocol(formHost);
     const rescan = this.rescan?.value;
     this.httpService.startScan(host, rescan).subscribe({
       next: (scan) => {
-        console.log('DATA: ', scan);
-        console.log('SCAN_ID: ', scan.scan_id);
-        console.log('SCAN_ID: ', scan.state);
         this.isScanning = true;
       },
       error: (error) => {
-        console.error('There was an error!', error);
+        console.error('There was an error! ', error);
       },
     });
   }

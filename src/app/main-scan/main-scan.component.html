@@ -1,6 +1,8 @@
 <main *ngIf="!isScanning" class="m-auto space-y-6 py-16">
   <div class="container mx-auto px-1 space-y-1">
-    <h1 class="font-bold text-2xl sm:text-3xl text-center mx-auto max-w-prose">
+    <h1
+      class="font-bold font-heading text-2xl sm:text-3xl text-center mx-auto max-w-prose"
+    >
       Scan je website op kwetsbaarheden
     </h1>
     <h4
@@ -73,7 +75,7 @@
           <div class="card-actions justify-center">
             <button
               type="button"
-              class="btn bg-primary text-base-100 sm:btn-wide"
+              class="btn-gbm sm:btn-wide"
               (click)="onSubmit()"
             >
               <svg
@@ -91,10 +93,10 @@
                   clip-rule="evenodd"
                 />
               </svg>
-              <a>Start Scan</a>
+              Start Scan
             </button>
           </div>
-          <div class="card-actions" *ngIf="form.invalid && form.touched">
+          <div class="card-actions" *ngIf="form.invalid && hasClickedSubmit">
             <div class="alert alert-error shadow-lg">
               <div>
                 <svg
@@ -110,9 +112,7 @@
                     d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <span *ngIf="host.touched && host.invalid"
-                  >De domein naam is incorrect.</span
-                >
+                <span *ngIf="host.invalid">De domein naam is incorrect.</span>
                 <span *ngIf="acceptTerms.invalid && host.valid"
                   >Je moet akkoord gaan met de voorwaarden.</span
                 >
