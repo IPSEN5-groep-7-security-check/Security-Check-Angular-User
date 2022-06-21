@@ -14,11 +14,11 @@
           class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
           (click)="scanResult.toggleModal()"
         >
-            <span
-              class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none"
-            >
-              ×
-            </span>
+          <span
+            class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none"
+          >
+            ×
+          </span>
         </button>
       </div>
       <div class="relative p-6 flex-auto">
@@ -38,22 +38,19 @@
           />
           <div
             *ngIf="
-                (nameFormControl.invalid && nameFormControl.touched) ||
-                nameFormControl.dirty
-              "
+              (nameFormControl.invalid && nameFormControl.touched) ||
+              nameFormControl.dirty
+            "
           >
             <small
               *ngIf="nameFormControl.errors?.['required']"
               class="text-danger"
-            >Een naam is verplicht</small
+              >Een naam is verplicht</small
             >
           </div>
         </div>
         <div class="mb-4">
-          <label
-            class="block text-gray-700 text-sm font-bold mb-2"
-            for="email"
-          >
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
             E-mail*
           </label>
           <input
@@ -65,19 +62,19 @@
           />
           <div
             *ngIf="
-                (emailFormControl.invalid && emailFormControl.touched) ||
-                emailFormControl.dirty
-              "
+              (emailFormControl.invalid && emailFormControl.touched) ||
+              emailFormControl.dirty
+            "
           >
             <small
               *ngIf="emailFormControl.errors?.['required']"
               class="text-danger"
-            >Een E-mailadres is verplicht</small
+              >Een E-mailadres is verplicht</small
             >
             <small
               *ngIf="emailFormControl.errors?.['pattern']"
               class="text-danger"
-            >Vul een valide mail adres in</small
+              >Vul een valide mail adres in</small
             >
           </div>
         </div>
@@ -97,14 +94,14 @@
           />
           <div
             *ngIf="
-                (phoneFormControl.invalid && phoneFormControl.touched) ||
-                phoneFormControl.dirty
-              "
+              (phoneFormControl.invalid && phoneFormControl.touched) ||
+              phoneFormControl.dirty
+            "
           >
             <small
               *ngIf="phoneFormControl.errors?.['minLength']"
               class="text-danger"
-            >Het nummer klopt niet.</small
+              >Het nummer klopt niet.</small
             >
           </div>
         </div>
@@ -113,17 +110,13 @@
         class="flex items-center justify-center p-6 border-t border-solid border-slate-200 rounded-b"
       >
         <button
-          class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          class="text-gray-700 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
           type="button"
           (click)="scanResult.toggleModal()"
         >
           Sluiten
         </button>
-        <button
-          class="bg-rose-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-          type="button"
-          (click)="sendEmail()"
-        >
+        <button class="btn-gbm" type="button" (click)="sendEmail()">
           Verstuur
         </button>
       </div>
@@ -134,4 +127,3 @@
   *ngIf="scanResult.showModal"
   class="opacity-50 blur-3xl fixed inset-0 z-40 bg-black"
 ></div>
-
