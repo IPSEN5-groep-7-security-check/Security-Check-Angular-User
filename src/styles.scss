@@ -3,18 +3,41 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-html,
-body {
-  min-height: 100vh;
-  height: auto;
-  margin: 0;
-  width: 100%;
-  padding: 0;
-  overflow-x: hidden;
+@mixin font-face($name, $folder, $fileinfo: "", $weight: 400, $style: normal) {
+  @font-face {
+    font-family: $name;
+    src: url(quote(
+        "/assets/fonts/" + $folder + "/" + $folder + $fileinfo + ".woff"
+      )),
+      url(quote("/assets/fonts/" + $folder + $folder + $fileinfo + ".woff"));
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
+
+@include font-face("Geometos Rounded", "geometos-rounded");
+@include font-face("Nunito Sans", "nunito-sans", "-v11-latin-regular");
+@include font-face("Nunito Sans", "nunito-sans", "-v11-latin-700", 700);
+@include font-face(
+  "Nunito Sans",
+  "nunito-sans",
+  "-v11-latin-italic",
+  400,
+  italic
+);
+@include font-face(
+  "Nunito Sans",
+  "nunito-sans",
+  "-v11-latin-700italic",
+  700,
+  italic
+);
+
+.btn-gbm {
+  @apply btn text-white border-none font-geometos hover:bg-gradient-to-r hover:from-primary ease-in-out hover:to-secondary duration-500 bg-primary;
 }
 
 body {
-  margin: 0;
   background: var(--bkg-color);
 }
 
@@ -28,11 +51,6 @@ body {
   border: none;
 }
 
-body {
-  margin: 0;
-  height: 100%;
-}
-
 h1 {
   color: #000000;
 }
@@ -42,7 +60,7 @@ body:not(.dark-mode-preloading) {
 }
 
 body.dark-mode {
-  background-color: #2d3436;
+  background-color: #1e1e20;
   color: #dfe6e9;
   .bar-col {
     background-color: #000000;
@@ -50,7 +68,8 @@ body.dark-mode {
 }
 
 body.dark-mode h1,
-body.dark-mode h4 {
+body.dark-mode h4,
+body.dark-mode p {
   color: #ffffff;
 }
 
@@ -63,11 +82,12 @@ body.light-mode {
 }
 
 body.light-mode h1,
-body.light-mode h4 {
+body.light-mode h4,
+body.light-mode p {
   color: #000000;
 }
 
-.h1-col-override {
+.text-col-override-dark {
   color: #000000 !important;
 }
 
