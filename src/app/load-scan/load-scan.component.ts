@@ -10,14 +10,15 @@ import { Scan } from '../util/scan';
 })
 export class LoadScanComponent implements OnInit {
   constructor(private router: Router, private httpService: HTTPService) {}
+  // scanState?: Scan['state'];
   private scan: Scan | undefined;
 
   ngOnInit(): void {
-    this.checkScanStatus().then(() => {});
+    this.checkScanStatus().then(r => console.log(r));
   }
 
   async checkScanStatus() {
-    const host = this.httpService.tempHost;
+    const host = this.httpService.tempHost; // TODO: get this from somewhere
     if (host != null) {
       this.scan = await this.httpService.getScanStatus(host).toPromise();
     }
@@ -25,6 +26,8 @@ export class LoadScanComponent implements OnInit {
     if (state === 'FINISHED') {
       await this.router.navigate(['/scan-result']);
     } else if (state === 'ABORTED' || state === 'FAILED') {
+      console.error('Scan failed');
+      // TODO: handle error state
       await this.router.navigate(['/home']); // Navigate to home for now
     } else {
       setTimeout(() => {
