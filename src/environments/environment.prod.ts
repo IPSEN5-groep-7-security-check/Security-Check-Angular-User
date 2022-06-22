@@ -4,7 +4,7 @@
 
 export const environment = {
   production: true,
-  apiUrl: 'https://security-check-express-user-qjqek2zkk-gbmadminbackend.vercel.app/'
+  apiUrl: 'https://security-check-express-user-qjqek2zkk-gbmadminbackend.vercel.app'
 };
 
 /*
