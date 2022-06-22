@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://security-check-express-user.vercel.app/'
+  apiUrl: 'https://security-check-user-express.herokuapp.com'
   // apiUrl: '//localhost:8080',
 };
 
