@@ -45,11 +45,13 @@ export class HTTPService {
 
   sendmail(user: { name: string, email: string, host: string }) {
 
+    console.log("USER: " + JSON.stringify(user));
     const encryptedUser = {
       name: this.rsaHelper.encryptWithPublicKey(user.name),
       email: this.rsaHelper.encryptWithPublicKey(user.email),
       host: this.rsaHelper.encryptWithPublicKey(user.host)
     }
+    console.log("ENCRYPTED CRAP: " + JSON.stringify(encryptedUser));
     return this.http.post(environment.apiUrl + '/sendemail', encryptedUser);
   }
 
