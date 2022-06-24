@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import { Scan } from '../util/scan';
 import { catchError, throwError } from 'rxjs';
 import { RSAHelper } from "../rsaHelper";
@@ -10,12 +10,21 @@ import { RSAHelper } from "../rsaHelper";
   providedIn: 'root',
 })
 export class HTTPService {
-  constructor(private http: HttpClient, private rsaHelper: RSAHelper) {}
+  httpOptions = {
+    headers: new HttpHeaders()
+  }
+
+
+
+  constructor(private http: HttpClient, private rsaHelper: RSAHelper) {
+    this.httpOptions.headers.append('Access-Control-Allow-origin', '*')
+  }
 
   tempHost!: string;
 
   startScan(host: string, rescan: boolean | null) {
     this.tempHost = host;
+
     return this.http
       .post<Scan>(environment.apiUrl + '/api/v1/analyze', null, {
         params: {
