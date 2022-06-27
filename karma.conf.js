@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true, // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require("path").join(__dirname, "./coverage/ipsen4-demo"),
+      dir: require("path").join(__dirname, "./coverage/IPSEN5-groep07-GBM"),
       subdir: ".",
       reporters: [{ type: "html" }, { type: "text-summary" }],
     },
